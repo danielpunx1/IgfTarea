@@ -39,4 +39,11 @@ public class TiposDescuentosDAO {
 		}
 	}
 	
+	public TiposDescuentos daDescuentoById(String ids){
+		sesion = sessionFactory.openSession() ;
+		TiposDescuentos id = (TiposDescuentos) sesion.get(TiposDescuentos.class, ids);
+		sesion.close() ;
+		return id ;
+	}
+	
 }

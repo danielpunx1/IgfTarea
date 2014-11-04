@@ -52,9 +52,6 @@
                                         <a href="portfolio.html"><i class="icon-user"></i><br />Empleados</a>
                                     </li>
                                     <li>
-                                        <a href="contact.html"><i class="icon-adjust"></i><br />Genero</a>
-                                    </li>
-                                    <li>
                                         <a href="#"><i class="icon-th-list"></i><br />Puestos</a>
                                     </li>
                                     <li class="current-page">
@@ -73,7 +70,7 @@
                                         <a href="contact.html"><i class="icon-th"></i><br />Boleta/Descuento</a>
                                     </li>
                                     <li>
-                                        <a href="contact.html"><i class="icon-list"></i><br />Descuentos</a>
+                                        <a href="tiposDescuentos.html"><i class="icon-list"></i><br />Descuentos</a>
                                     </li>
                                 </ul>
                             </div>
@@ -89,8 +86,8 @@
                 <div class="row">
                     <div class="span12">
                         <i class="icon-envelope-alt page-title-icon"></i>
-                        <h2>Contact Us /</h2>
-                        <p>Here is how you can contact us</p>
+                        <h2>TiposDescuentos /</h2>
+                        <p>Agregar un nuevo registro</p>
                     </div>
                 </div>
             </div>
@@ -99,29 +96,26 @@
         <!-- Contact Us -->
         <div class="contact-us container">
             <div class="row">
-            <form method="post" action="assets/sendmail.php">
+            <form method="post" action="tiposDescuentos.jsp">
                 <div class="otro span5" style="float:left">
-                 <!--   <p><h2>Nuevo xxxxx</h2></p> -->
                     
-                        <label for="name" class="nameLabel">Name</label>
-                          <input id="name" type="text" name="name" placeholder="Enter your name...">
-                        <label for="email" class="emailLabel">Email</label>
-                          <input id="email" type="text" name="email" placeholder="Enter your email...">
-                        <label for="subject">Subject</label>
-                          <input id="subject" type="text" name="subject" placeholder="Your subject...">
-                        <!-- <button type="submit" style="float:right;">Send</button> -->
+                        <label for="id" class="nameLabel">Id Tipo/Descuento</label>
+                          <input id="id" type="text" name="id" placeholder="Ingreso una ID" maxlength="5">
+                        
+                        <label for="porcentaje">Porcentaje</label>
+                          <input id="porcentaje" type="text" name="porcentaje" placeholder="Ingrese un porcentaje">
+                          
+                        <label for="fecha">Fecha</label>
+                          <input id="fecha" type="date" name="fecha">
+                     
                 </div>
                 
                 <div class="otro span5" style="float:left;margin-top: 0px;padding: 0 25px;">
-                   <!-- <p><h2>Nuevo xxxxx</h2></p> -->
-                        <label for="name" class="nameLabel">Name</label>
-                          <input id="name" type="text" name="name" placeholder="Enter your name...">
-                        <label for="email" class="emailLabel">Email</label>
-                          <input id="email" type="text" name="email" placeholder="Enter your email...">
-                        <label for="subject">Subject</label>
-                          <input id="subject" type="text" name="subject" placeholder="Your subject...">
-                        <button type="submit" style="float:right;">Accion</button>
-                    
+                        
+                        <label for="descripcion" class="emailLabel">Descripci&oacute;n</label>
+                          <textarea placeholder="Ingrese una descripcion" cols="40" rows="50"></textarea>
+                          
+                        <button type="submit" style="float:right;">Guardar</button>    
                 </div>
                 </form>
                 

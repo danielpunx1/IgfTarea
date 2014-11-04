@@ -3,12 +3,15 @@ package dominio;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,34 +26,37 @@ import javax.persistence.TemporalType;
 public class TiposDescuentos implements Serializable {
 	
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Basic(optional = false)
-	@Column(name = "id_tiposdescuentos")
+	@Column(name = "id_tiposdescuentos", unique=true, nullable=false, length=5)
 	private String id_tiposdescuentos;
 	
-	@Basic(optional = false)
-	@Column(name = "descripcion")
+	@Column(name = "descripcion" , length=250)
 	private String descripcion;
 	
-	@Column(name = "porcentaje_descuento")
+	@Column(name = "porcentaje_descuento", precision=5, scale=3)
 	private BigDecimal porcentaje_descuento;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "fecha_ingreso")
+	@Temporal(TemporalType.DATE)
+	@Column(name = "fecha_ingreso", nullable=false, length=10)
 	private Date fecha_ingreso;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "tiposdescuentos" )
-	private List<BoletaPagoDescuento> BPDList;
+	//@OneToMany(fetch=FetchType.LAZY, mappedBy="tiposdescuentos")
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY,mappedBy = "tiposdescuentos" )
+	private Set boletapagodescuentos = new HashSet(0);
+	//private List<BoletaPagoDescuento> BPDList;
+	//private String BPDList;
+	
 	
 	private TiposDescuentos(){
 		
 	}
 	
-	public TiposDescuentos(String id_tiposdescuentos, String descripcion, BigDecimal porcentaje_descuento, Date fecha){
+	public TiposDescuentos(String id_tiposdescuentos, String descripcion, BigDecimal porcentaje_descuento, Date fecha, Set boletapagodescuentos){
 		this.id_tiposdescuentos = id_tiposdescuentos;
 		this.descripcion = descripcion;
 		this.porcentaje_descuento = porcentaje_descuento;
 		this.fecha_ingreso = fecha;
+		this.boletapagodescuentos = boletapagodescuentos;
 	}
 
 	public String getId_tiposdescuentos() {
@@ -85,6 +91,7 @@ public class TiposDescuentos implements Serializable {
 		this.fecha_ingreso = fecha_ingreso;
 	}
 
+	/*
 	public List<BoletaPagoDescuento> getBPDList() {
 		return BPDList;
 	}
@@ -92,5 +99,15 @@ public class TiposDescuentos implements Serializable {
 	public void setBPDList(List<BoletaPagoDescuento> bPDList) {
 		BPDList = bPDList;
 	}
+	*/
+	
+	 public Set getBoletapagodescuentos() {
+	        return this.boletapagodescuentos;
+	    }
+	    
+	    public void setBoletapagodescuentos(Set boletapagodescuentos) {
+	        this.boletapagodescuentos = boletapagodescuentos;
+	    }
+	
 	
 }

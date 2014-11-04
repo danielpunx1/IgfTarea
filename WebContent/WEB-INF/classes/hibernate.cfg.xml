@@ -9,7 +9,7 @@
         <!-- Settings for a local HSQL (testing) database. -->
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost/clave2</property> <!--standar para BD -->
+        <property name="connection.url">jdbc:mysql://localhost/clave2</property>
         <property name="connection.username">root</property>
         <property name="connection.password">root</property>
 
@@ -43,7 +43,7 @@
         <!-- Hibernate Annotations (and package-info.java)
         <mapping package="org.mypackage"/>
         -->
-        <mapping class="dominio.BoletaDescuento"/> <!-- cada quien agrege sus clases -->
+        <mapping class="dominio.TiposDescuentos"/>
 
     </session-factory>
 

@@ -1,184 +1,184 @@
 /*==============================================================*/
-/* DBMS name:      MySQL 5.0                                    */
-/* Created on:     03/11/2014 10:52:06 a.m.                     */
+/* dbms name:      mysql 5.0                                    */
+/* created on:     03/11/2014 10:52:06 a.m.                     */
 /*==============================================================*/
 
 
-drop table if exists AUDITORIA;
+drop table if exists auditoria;
 
-drop table if exists BOLETAPAGO;
+drop table if exists boletapago;
 
-drop table if exists BOLETAPAGODESCUENTO;
+drop table if exists boletapagodescuento;
 
-drop table if exists DEPARTAMENTO;
+drop table if exists departamento;
 
-drop table if exists EMPLEADO;
+drop table if exists empleado;
 
-drop table if exists GENERO;
+drop table if exists genero;
 
-drop table if exists MUNICIPIO;
+drop table if exists municipio;
 
-drop table if exists OFICINA;
+drop table if exists oficina;
 
-drop table if exists PUESTO;
+drop table if exists puesto;
 
-drop table if exists TIPOSDESCUENTOS;
+drop table if exists tiposdescuentos;
 
 /*==============================================================*/
-/* Table: AUDITORIA                                             */
+/* table: auditoria                                             */
 /*==============================================================*/
-create table AUDITORIA
+create table auditoria
 (
-   ID                   int not null auto_increment,
-   TABLA                varchar(40),
-   CRUD                 varchar(30),
-   USUARIO              varchar(50),
-   FECHA                datetime,
-   primary key (ID)
+   id                   int not null auto_increment,
+   tabla                varchar(40),
+   crud                 varchar(30),
+   usuario              varchar(50),
+   fecha                datetime,
+   primary key (id)
 );
 
 /*==============================================================*/
-/* Table: BOLETAPAGO                                            */
+/* table: boletapago                                            */
 /*==============================================================*/
-create table BOLETAPAGO
+create table boletapago
 (
-   ID_BOLETAPAGO        smallint not null,
-   ID_EMPLEADO          varchar(5),
-   PERIODO_PAGO         varchar(25) not null,
-   SUELDO_NETO          decimal(10,2) not null,
-   primary key (ID_BOLETAPAGO)
+   id_boletapago        smallint not null,
+   id_empleado          varchar(5),
+   periodo_pago         varchar(25) not null,
+   sueldo_neto          decimal(10,2) not null,
+   primary key (id_boletapago)
 );
 
 /*==============================================================*/
-/* Table: BOLETAPAGODESCUENTO                                   */
+/* table: boletapagodescuento                                   */
 /*==============================================================*/
-create table BOLETAPAGODESCUENTO
+create table boletapagodescuento
 (
-   ID_BOLETAPAGODESCUENTO int not null,
-   ID_BOLETAPAGO        smallint,
-   ID_TIPOSDESCUENTOS   varchar(5),
-   MONTO_DESCUENTO      decimal(11,2),
-   primary key (ID_BOLETAPAGODESCUENTO)
+   id_boletapagodescuento int not null,
+   id_boletapago        smallint,
+   id_tiposdescuentos   varchar(5),
+   monto_descuento      decimal(11,2),
+   primary key (id_boletapagodescuento)
 );
 
 /*==============================================================*/
-/* Table: DEPARTAMENTO                                          */
+/* table: departamento                                          */
 /*==============================================================*/
-create table DEPARTAMENTO
+create table departamento
 (
-   ID_DEPTO             varchar(2) not null,
-   NOMBRE_DEPTO         varchar(25) not null,
-   ZONA_GEOGRAFICA      varchar(15) not null,
-   primary key (ID_DEPTO)
+   id_depto             varchar(2) not null,
+   nombre_depto         varchar(25) not null,
+   zona_geografica      varchar(15) not null,
+   primary key (id_depto)
 );
 
 /*==============================================================*/
-/* Table: EMPLEADO                                              */
+/* table: empleado                                              */
 /*==============================================================*/
-create table EMPLEADO
+create table empleado
 (
-   ID_EMPLEADO          varchar(5) not null,
-   ID_PUESTO            smallint,
-   ID_OFICINA           varchar(5),
-   ID_SEXO              varchar(1),
-   ID_JEFE              varchar(5),
-   NIT                  varchar(14) not null,
-   DUI                  varchar(45) not null,
-   NOMBRES              varchar(45) not null,
-   APELLIDO_PAT         varchar(45) not null,
-   APELLIDO_MAT         varchar(45) not null,
-   FECHA_NACIMIENTO     date not null,
-   FECHA_INGRESO        date not null,
-   SUELDO               decimal(11,2) not null,
-   EMAIL                varchar(45),
-   TELEFONO             varchar(45) not null,
-   ACTIVO               varchar(1),
-   primary key (ID_EMPLEADO)
+   id_empleado          varchar(5) not null,
+   id_puesto            smallint,
+   id_oficina           varchar(5),
+   id_sexo              varchar(1),
+   id_jefe              varchar(5),
+   nit                  varchar(14) not null,
+   dui                  varchar(45) not null,
+   nombres              varchar(45) not null,
+   apellido_pat         varchar(45) not null,
+   apellido_mat         varchar(45) not null,
+   fecha_nacimiento     date not null,
+   fecha_ingreso        date not null,
+   sueldo               decimal(11,2) not null,
+   email                varchar(45),
+   telefono             varchar(45) not null,
+   activo               varchar(1),
+   primary key (id_empleado)
 );
 
 /*==============================================================*/
-/* Table: GENERO                                                */
+/* table: genero                                                */
 /*==============================================================*/
-create table GENERO
+create table genero
 (
-   ID_SEXO              varchar(1) not null,
-   D_SEXO               varchar(12) not null,
-   primary key (ID_SEXO)
+   id_sexo              varchar(1) not null,
+   d_sexo               varchar(12) not null,
+   primary key (id_sexo)
 );
 
 /*==============================================================*/
-/* Table: MUNICIPIO                                             */
+/* table: municipio                                             */
 /*==============================================================*/
-create table MUNICIPIO
+create table municipio
 (
-   ID_MUNICIPIO         varchar(2) not null,
-   ID_DEPTO             varchar(2),
-   NOMB_MUNICIPIO       varchar(25) not null,
-   primary key (ID_MUNICIPIO)
+   id_municipio         varchar(2) not null,
+   id_depto             varchar(2),
+   nomb_municipio       varchar(25) not null,
+   primary key (id_municipio)
 );
 
 /*==============================================================*/
-/* Table: OFICINA                                               */
+/* table: oficina                                               */
 /*==============================================================*/
-create table OFICINA
+create table oficina
 (
-   ID_OFICINA           varchar(5) not null,
-   ID_MUNICIPIO         varchar(2),
-   NOMB_OFICINA         varchar(45) not null,
-   DOMICILIO            varchar(100),
-   primary key (ID_OFICINA)
+   id_oficina           varchar(5) not null,
+   id_municipio         varchar(2),
+   nomb_oficina         varchar(45) not null,
+   domicilio            varchar(100),
+   primary key (id_oficina)
 );
 
 /*==============================================================*/
-/* Table: PUESTO                                                */
+/* table: puesto                                                */
 /*==============================================================*/
-create table PUESTO
+create table puesto
 (
-   ID_PUESTO            smallint not null,
-   NOMB_PUESTO          varchar(45) not null,
-   PERFIL_PUESTO        varchar(255) not null,
-   FECHA_ING            date not null,
-   SUELDO_MIN           decimal(11,2),
-   SUELDO_MAX           decimal(11,2),
-   primary key (ID_PUESTO)
+   id_puesto            smallint not null,
+   nomb_puesto          varchar(45) not null,
+   perfil_puesto        varchar(255) not null,
+   fecha_ing            date not null,
+   sueldo_min           decimal(11,2),
+   sueldo_max           decimal(11,2),
+   primary key (id_puesto)
 );
 
 /*==============================================================*/
-/* Table: TIPOSDESCUENTOS                                       */
+/* table: tiposdescuentos                                       */
 /*==============================================================*/
-create table TIPOSDESCUENTOS
+create table tiposdescuentos
 (
-   ID_TIPOSDESCUENTOS   varchar(5) not null,
-   DESCRIPCION          varchar(250),
-   PORCENTAJE_DESCUENTO decimal(5,3),
-   FECHA_INGRESO        date not null,
-   primary key (ID_TIPOSDESCUENTOS)
+   id_tiposdescuentos   varchar(5) not null,
+   descripcion          varchar(250),
+   porcentaje_descuento decimal(5,3),
+   fecha_ingreso        date not null,
+   primary key (id_tiposdescuentos)
 );
 
-alter table BOLETAPAGO add constraint FK_RELATIONSHIP_5 foreign key (ID_EMPLEADO)
-      references EMPLEADO (ID_EMPLEADO) on delete restrict on update restrict;
+alter table boletapago add constraint fk_relationship_5 foreign key (id_empleado)
+      references empleado (id_empleado) on delete restrict on update restrict;
 
-alter table BOLETAPAGODESCUENTO add constraint FK_RELATIONSHIP_8 foreign key (ID_BOLETAPAGO)
-      references BOLETAPAGO (ID_BOLETAPAGO) on delete restrict on update restrict;
+alter table boletapagodescuento add constraint fk_relationship_8 foreign key (id_boletapago)
+      references boletapago (id_boletapago) on delete restrict on update restrict;
 
-alter table BOLETAPAGODESCUENTO add constraint FK_RELATIONSHIP_9 foreign key (ID_TIPOSDESCUENTOS)
-      references TIPOSDESCUENTOS (ID_TIPOSDESCUENTOS) on delete restrict on update restrict;
+alter table boletapagodescuento add constraint fk_relationship_9 foreign key (id_tiposdescuentos)
+      references tiposdescuentos (id_tiposdescuentos) on delete restrict on update restrict;
 
-alter table EMPLEADO add constraint FK_RELATIONSHIP_1 foreign key (ID_PUESTO)
-      references PUESTO (ID_PUESTO) on delete restrict on update restrict;
+alter table empleado add constraint fk_relationship_1 foreign key (id_puesto)
+      references puesto (id_puesto) on delete restrict on update restrict;
 
-alter table EMPLEADO add constraint FK_RELATIONSHIP_2 foreign key (ID_OFICINA)
-      references OFICINA (ID_OFICINA) on delete restrict on update restrict;
+alter table empleado add constraint fk_relationship_2 foreign key (id_oficina)
+      references oficina (id_oficina) on delete restrict on update restrict;
 
-alter table EMPLEADO add constraint FK_RELATIONSHIP_3 foreign key (ID_SEXO)
-      references GENERO (ID_SEXO) on delete restrict on update restrict;
+alter table empleado add constraint fk_relationship_3 foreign key (id_sexo)
+      references genero (id_sexo) on delete restrict on update restrict;
 
-alter table EMPLEADO add constraint FK_RELATIONSHIP_4 foreign key (ID_JEFE)
-      references EMPLEADO (ID_EMPLEADO) on delete restrict on update restrict;
+alter table empleado add constraint fk_relationship_4 foreign key (id_jefe)
+      references empleado (id_empleado) on delete restrict on update restrict;
 
-alter table MUNICIPIO add constraint FK_RELATIONSHIP_7 foreign key (ID_DEPTO)
-      references DEPARTAMENTO (ID_DEPTO) on delete restrict on update restrict;
+alter table municipio add constraint fk_relationship_7 foreign key (id_depto)
+      references departamento (id_depto) on delete restrict on update restrict;
 
-alter table OFICINA add constraint FK_RELATIONSHIP_6 foreign key (ID_MUNICIPIO)
-      references MUNICIPIO (ID_MUNICIPIO) on delete restrict on update restrict;
+alter table oficina add constraint fk_relationship_6 foreign key (id_municipio)
+      references municipio (id_municipio) on delete restrict on update restrict;
 
