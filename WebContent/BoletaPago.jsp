@@ -1,11 +1,9 @@
-<%@page import="java.util.Date"%>
-<%@page import="java.math.BigDecimal"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
+<%@page import="java.math.BigDecimal"%>
 <%@ page import="dominio.BoletaPago" %>
 <%@ page import="negocio.CtrlBoletaPago" %> 
-<%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="dominio.Empleado" %> 
 <%@ page import="negocio.CtrlEmpleado" %>  
 
@@ -16,28 +14,27 @@
 	BigDecimal sueldo = new BigDecimal( request.getParameter("sueldo") );
 	String empleado = request.getParameter("empleado");
 	
-	CtrlEmpleado verificar = CtrlEmpleado();
-	Empleado emp = verificar.obtenerEmpleado(id);
+	CtrlEmpleado verificar = new CtrlEmpleado();
+	Empleado emp = verificar.obtenerEmpleado(empleado);
 	
 	if( emp != null ){
-		CtrlBoletaPago nuevo = CtrlBoletaPago();
+		CtrlBoletaPago nuevo = new CtrlBoletaPago();
 		boolean res = nuevo.crearBoleta(id, emp, periodo, sueldo);
+		
+		if( res == true)
+		{
+			msj ="La boleta fue creada con exito";
+		}
+		else
+		{
+			msj = "NO se pudo crear la boleta";
+		}
 	}
 	else
 	{
 		msj = "El empleado no existe";
 	}
 	
-	
-
-	
-	if( res ){
-		msj = "El descuento fue creado exitosamente";
-	}
-	else
-	{
-		msj = "El descuento ya existe";
-	}
 	
 
 %>   
