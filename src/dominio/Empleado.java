@@ -78,11 +78,11 @@ public class Empleado implements Serializable{
 	private String activo;
 	
 	public Puesto getPuesto() {
-		return puesto;
+		return id_puesto;
 	}
 
 	public void setPuesto(Puesto puesto) {
-		this.puesto = puesto;
+		this.id_puesto = puesto;
 	}
 
 	public Oficina getOficina() {
@@ -119,7 +119,7 @@ public class Empleado implements Serializable{
 		this.nit = nit;
 		this.dui = dui;
 		this.id_empleado = id_empleado;
-		this.puesto = puesto;
+		this.id_puesto = id_puesto;
 		this.oficina = oficina;
 		this.genero = genero;
 		this.empleado = empleado;

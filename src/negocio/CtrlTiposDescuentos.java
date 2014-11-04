@@ -9,7 +9,7 @@ import dominio.TiposDescuentos;;
 
 public class CtrlTiposDescuentos {
 
-private TiposDescuentosDAO  daoDescuento = new TiposDescuentosDAO();
+	private TiposDescuentosDAO  daoDescuento = new TiposDescuentosDAO();
 	
 	public boolean crearDescuento(String id, String descripcion, BigDecimal porcentaje, Date fecha ){
 		if(daoDescuento.daDescuentoById(id) == null)
