@@ -42,7 +42,7 @@ create table auditoria
 /*==============================================================*/
 create table boletapago
 (
-   id_boletapago        smallint not null,
+   id_boletapago        smallint not null AUTO_INCREMENT,
    id_empleado          varchar(5),
    periodo_pago         varchar(25) not null,
    sueldo_neto          decimal(10,2) not null,
@@ -134,7 +134,7 @@ create table oficina
 /*==============================================================*/
 create table puesto
 (
-   id_puesto            smallint not null,
+   id_puesto            smallint NOT NULL AUTO_INCREMENT,,
    nomb_puesto          varchar(45) not null,
    perfil_puesto        varchar(255) not null,
    fecha_ing            date not null,

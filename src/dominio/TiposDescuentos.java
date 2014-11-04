@@ -36,13 +36,11 @@ public class TiposDescuentos implements Serializable {
 	private BigDecimal porcentaje_descuento;
 	
 	@Temporal(TemporalType.DATE)
-	@Column(name = "fecha_ingreso", nullable=false, length=10)
+	@Column(name = "fecha_ingreso", nullable=false)
 	private Date fecha_ingreso;
 	
-	//@OneToMany(fetch=FetchType.LAZY, mappedBy="tiposdescuentos")
-	
-	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY,mappedBy = "tiposdescuentos" )
-	private Set boletapagodescuentos = new HashSet(0);
+//	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY,mappedBy = "tiposdescuentos" )
+//	private Set boletapagodescuentos = new HashSet(0);
 	//private List<BoletaPagoDescuento> BPDList;
 	//private String BPDList;
 	
@@ -51,12 +49,11 @@ public class TiposDescuentos implements Serializable {
 		
 	}
 	
-	public TiposDescuentos(String id_tiposdescuentos, String descripcion, BigDecimal porcentaje_descuento, Date fecha, Set boletapagodescuentos){
+	public TiposDescuentos(String id_tiposdescuentos, String descripcion, BigDecimal porcentaje_descuento, Date fecha){
 		this.id_tiposdescuentos = id_tiposdescuentos;
 		this.descripcion = descripcion;
 		this.porcentaje_descuento = porcentaje_descuento;
 		this.fecha_ingreso = fecha;
-		this.boletapagodescuentos = boletapagodescuentos;
 	}
 
 	public String getId_tiposdescuentos() {
@@ -101,13 +98,13 @@ public class TiposDescuentos implements Serializable {
 	}
 	*/
 	
-	 public Set getBoletapagodescuentos() {
-	        return this.boletapagodescuentos;
-	    }
-	    
-	    public void setBoletapagodescuentos(Set boletapagodescuentos) {
-	        this.boletapagodescuentos = boletapagodescuentos;
-	    }
+//	 public Set getBoletapagodescuentos() {
+//	        return this.boletapagodescuentos;
+//	    }
+//	    
+//	    public void setBoletapagodescuentos(Set boletapagodescuentos) {
+//	        this.boletapagodescuentos = boletapagodescuentos;
+//	    }
 	
 	
 }

@@ -14,7 +14,7 @@ private TiposDescuentosDAO  daoDescuento = new TiposDescuentosDAO();
 	public boolean crearDescuento(String id, String descripcion, BigDecimal porcentaje, Date fecha ){
 		if(daoDescuento.daDescuentoById(id) == null)
 		{
-			TiposDescuentos nuevo = new TiposDescuentos(id,descripcion,porcentaje,fecha,new HashSet(0));
+			TiposDescuentos nuevo = new TiposDescuentos(id,descripcion,porcentaje,fecha);
 			daoDescuento.guardaActualiza(nuevo);
 			return true;
 		}
