@@ -13,13 +13,19 @@ import javax.persistence.Table;
 @Table(name = "empleado", catalog = "clave2", schema = "")
 public class Empleado implements Serializable{
 	
-	private String nit;
-	private String dui;
 	@Id
 	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional = false)
 	@Column(name = "id_empleado")
 	private String id_empleado;
+	
+	@Basic(optional = false)
+	@Column(name = "nit")
+	private String nit;
+	
+	@Basic(optional = false)
+	@Column(name = "dui")
+	private String dui;
 	
 	@JoinColumn(name = "id_puesto", referencedColumnName = "id_puesto")
 	@ManyToOne(optional = false)
@@ -29,16 +35,46 @@ public class Empleado implements Serializable{
 	@ManyToOne(optional = false)
 	private Oficina oficina;
 	
+	@JoinColumn(name = "id_sexo", referencedColumnName = "id_sexo")
+	@ManyToOne(optional = false)
 	private Genero genero;
+	
+	@JoinColumn(name = "id_jefe", referencedColumnName = "id_jefe")
+	@ManyToOne(optional = false)
 	private Empleado empleado;
+	
+	@Basic(optional = false)
+	@Column(name = "nombres")
 	private String nombres;
+	
+	@Basic(optional = false)
+	@Column(name = "apellido_pat")
 	private String apellido_pat;
+	
+	@Basic(optional = false)
+	@Column(name = "apellido_mat")
 	private String apellido_mat;
+	
+	@Basic(optional = false)
+	@Column(name = "fecha_nacimiento")
 	private String fecha_nacimiento;
+	
+	@Basic(optional = false)
+	@Column(name = "fecha_ingreso")
 	private String fecha_ingreso;
+	
+	@Basic(optional = false)
+	@Column(name = "sueldo")
 	private Double sueldo;
+	
+	@Column(name = "email")
 	private String email;
+	
+	@Basic(optional = false)
+	@Column(name = "telefono")
 	private String telefono;
+	
+	@Column(name = "activo")
 	private String activo;
 	
 	public Puesto getPuesto() {
@@ -76,8 +112,7 @@ public class Empleado implements Serializable{
 	public Empleado(){
 	}
 	
-	public Empleado(String nit, String dui, String id_empleado, Puesto puesto,
-			Oficina oficina, Genero genero, Empleado empleado, String nombres,
+	public Empleado(String nit, String dui, String id_empleado, String nombres,
 			String apellido_pat, String apellido_mat, String fecha_nacimiento,
 			String fecha_ingreso, Double sueldo, String email, String telefono,
 			String activo) {
