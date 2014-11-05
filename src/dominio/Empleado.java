@@ -1,6 +1,5 @@
 package dominio;
 import java.io.Serializable;
-import java.math.BigDecimal;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,14 +7,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-<<<<<<< HEAD
 import dominio.Puesto;
 import dominio.Oficina;
-=======
-
 import org.hibernate.annotations.ForeignKey;
 
->>>>>>> 28a29413d1b798b401a293f49e4aef57a4116573
 @Entity
 @Table(name = "empleado", catalog = "clave2", schema = "")
 public class Empleado implements Serializable{
