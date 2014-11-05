@@ -1,15 +1,10 @@
 package dominio;
 
 import java.io.Serializable;
-import java.util.List;
-
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -31,9 +26,15 @@ public class Departamento implements Serializable {
 	@Basic(optional = false)
 	@Column(name = "zona_geografica", length = 25)
 	private String zona_geografica;
+<<<<<<< HEAD
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY , mappedBy = "departamento")
 	private List<Municipio> munlist;
+=======
+	//private List<Municipio> municipioList;
+
+	private static final long serialVersionUID = 1L;
+>>>>>>> 4c3077c8f23de138b917953a960d38fd3cf3a2d1
 
 	
 	public Departamento() {
@@ -70,12 +71,22 @@ public class Departamento implements Serializable {
 		this.zona_geografica = zona_geografica;
 	}
 
+<<<<<<< HEAD
+=======
+	/*//Un departamento tiene varios municipios
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY ,mappedBy = "departamento")
+>>>>>>> 4c3077c8f23de138b917953a960d38fd3cf3a2d1
 	public List<Municipio> getMunicipioList() {
 		return munlist;
 	}
 
 	public void setMunicipioList(List<Municipio> municipioList) {
+<<<<<<< HEAD
 		this.munlist = municipioList;
 	}
+=======
+		this.municipioList = municipioList;
+	}*/
+>>>>>>> 4c3077c8f23de138b917953a960d38fd3cf3a2d1
 
 }

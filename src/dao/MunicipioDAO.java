@@ -8,6 +8,8 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Property;
 import org.hibernate.criterion.Restrictions;
 
 import datos.HibernateUtil;
@@ -92,8 +94,8 @@ public class MunicipioDAO {
 		sesion = sessionFactory.openSession();
 		//Query query = sesion.getNamedQuery("Departamentos.findAll");
 		//List<Departamento> departamentos = query.list();
-		Criteria criteria = sesion.createCriteria(Municipio.class);
-		List<Municipio> municipios = (List<Municipio>) criteria.list();
+		Criteria criteria = sesion.createCriteria(Municipio.class).addOrder(Order.asc("id_municipio"));
+		List<Municipio> municipios = criteria.list();
 		sesion.close();
 		return municipios;
 	}
