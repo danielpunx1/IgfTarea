@@ -134,7 +134,7 @@ create table oficina
 /*==============================================================*/
 create table puesto
 (
-   id_puesto            smallint NOT NULL AUTO_INCREMENT,,
+   id_puesto            smallint NOT NULL AUTO_INCREMENT,
    nomb_puesto          varchar(45) not null,
    perfil_puesto        varchar(255) not null,
    fecha_ing            date not null,
