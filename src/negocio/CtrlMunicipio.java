@@ -13,7 +13,7 @@ public class CtrlMunicipio {
 	public boolean crearMunicipio(String id_municipio, String id_depto, String nomb_municipio) {
 		if ((daoMun.daMunicipioByIdMunicipio(id_municipio)== null)&&(daoDepto.daDepartamentoByIdDepto(id_depto)!=null)) {
 			Departamento departamento = daoDepto.daDepartamentoByIdDepto(id_depto);
-			Municipio municipio = new Municipio(id_depto, departamento, nomb_municipio);
+			Municipio municipio = new Municipio(id_municipio, departamento, nomb_municipio);
 			daoMun.guardaActualiza(municipio);
 			return true;
 		} else {
@@ -34,7 +34,7 @@ public class CtrlMunicipio {
 		if (daoMun.daMunicipioByIdMunicipio(id_municipio) != null) {
 			Departamento departamento = daoDepto.daDepartamentoByIdDepto(id_depto);
 			Municipio municipio = daoMun.daMunicipioByIdMunicipio(id_municipio);
-			municipio.setIdDepto(departamento);
+			municipio.setDepto(departamento);
 			municipio.setNombMunicipio(nomb_municipio);
 			daoMun.guardaActualiza(municipio);
 			return true;
@@ -42,7 +42,7 @@ public class CtrlMunicipio {
 			return false;
 	}
 	
-	public List<Municipio> daMunicipio() {
+	public List<Municipio> daMunicipios() {
 		return daoMun.daMunicipios();
 	}
 

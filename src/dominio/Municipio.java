@@ -13,25 +13,17 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "municipio", catalog = "clave2", schema = "")
 public class Municipio implements Serializable {
-	private String id_municipio;
-	private Departamento depto;
-	private String nomb_municipio;
+	
+	
+	
 
 	private static final long serialVersionUID = 1L;
-
-	public Municipio() {
-
-	}
-
-	public Municipio(String id_municipio, Departamento depto, String nomb_municipio) {
-		this.depto = depto;
-		this.id_municipio = id_municipio;
-		this.nomb_municipio = nomb_municipio;
-	}
 
 	@Id
 	@Basic(optional = false)
 	@Column(name = "id_municipio", length = 2)
+	private String id_municipio;
+	
 	public String getIdMunicipio() {
 		return id_municipio;
 	}
@@ -42,16 +34,20 @@ public class Municipio implements Serializable {
 
 	@JoinColumn(name="id_depto", referencedColumnName="id_depto")
 	@ManyToOne(optional = false)
+	private Departamento depto;
+	
 	public Departamento getDepto() {
 		return depto;
 	}
 
-	public void setIdDepto(Departamento id_depto) {
-		this.depto = id_depto;
+	public void setDepto(Departamento depto) {
+		this.depto = depto;
 	}
 
 	@Basic(optional = false)
 	@Column(name = "nomb_municipio", length = 25)
+	private String nomb_municipio;
+	
 	public String getNombMunicipio() {
 		return nomb_municipio;
 	}
@@ -60,4 +56,14 @@ public class Municipio implements Serializable {
 		this.nomb_municipio = nomb_municipio;
 	}
 
+	public Municipio() {
+
+	}
+
+	public Municipio(String id_municipio, Departamento depto, String nomb_municipio) {
+		this.depto = depto;
+		this.id_municipio = id_municipio;
+		this.nomb_municipio = nomb_municipio;
+	}
+	
 }
