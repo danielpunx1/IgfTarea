@@ -9,7 +9,6 @@
 
 <% 
 	String msj ="";
- 	int id = Integer.parseInt(request.getParameter("id"));
  	String periodo = request.getParameter("periodo");
 	BigDecimal sueldo = new BigDecimal( request.getParameter("sueldo") );
 	String empleado = request.getParameter("empleado");
@@ -19,7 +18,7 @@
 	
 	if( emp != null ){
 		CtrlBoletaPago nuevo = new CtrlBoletaPago();
-		boolean res = nuevo.crearBoleta(id, emp, periodo, sueldo);
+		boolean res = nuevo.crearBoleta(emp, periodo, sueldo);
 		
 		if( res == true)
 		{

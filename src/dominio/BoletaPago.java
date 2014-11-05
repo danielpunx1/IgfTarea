@@ -41,8 +41,7 @@ public class BoletaPago implements Serializable{
 		
 	}
 	
-	public BoletaPago(Integer id_boletapago, Empleado id_empleado, String periodo_pago, BigDecimal sueldo_neto){
-		this.id_boletapago = id_boletapago;
+	public BoletaPago(Empleado id_empleado, String periodo_pago, BigDecimal sueldo_neto){
 		this.id_empleado = id_empleado;
 		this.periodo_pago = periodo_pago;
 		this.sueldo_neto = sueldo_neto;

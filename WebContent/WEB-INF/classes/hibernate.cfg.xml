@@ -43,14 +43,14 @@
         <!-- Hibernate Annotations (and package-info.java)
         <mapping package="org.mypackage"/>
         -->
-        <mapping class="dominio.TiposDescuentos"/>
-        <mapping class="dominio.Empleado"/>
-        <mapping class="dominio.BoletaPago"/>
-        <mapping class="dominio.Genero"/>
+        <mapping class="dominio.Departamento"/>
+        <mapping class="dominio.Municipio"/>
         <mapping class="dominio.Oficina"/>
         <mapping class="dominio.Puesto"/>
-        <mapping class="dominio.Municipio"/>
-        <mapping class="dominio.Departamento"/>
+        <mapping class="dominio.Genero"/>
+        <mapping class="dominio.Empleado"/>
+        <mapping class="dominio.BoletaPago"/>
+        <mapping class="dominio.TiposDescuentos"/>
 
     </session-factory>
 
