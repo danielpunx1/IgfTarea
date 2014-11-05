@@ -8,43 +8,38 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
-                            </a>
-                            <!--
-                            <h1>
-                                <a class="brand" href="index.html">Andia - a super cool design agency...</a>
-                            </h1>
-                            -->
+                            </a>                           
                             <div class="nav-collapse collapse">
                                 <ul class="nav pull-right">
                                     <li id="Home">
                                         <a href="index.html"><i class="icon-home"></i><br />Home</a>
                                     </li>
                                     <li id="Empleados">
-                                        <a href="portfolio.html"><i class="icon-user"></i><br />Empleados</a>
+                                        <a href="Empleados.jsp"><i class="icon-user"></i><br />Empleados</a>
                                     </li>
                                     <li id="Genero">
-                                        <a href="contact.html"><i class="icon-adjust"></i><br />Genero</a>
+                                        <a href="Genero.jsp"><i class="icon-adjust"></i><br />Genero</a>
                                     </li>
                                     <li id="Puestos">
-                                        <a href="#"><i class="icon-th-list"></i><br />Puestos</a>
+                                        <a href="Puestos.jsp"><i class="icon-th-list"></i><br />Puestos</a>
                                     </li>
                                     <li id="Oficinas">
-                                        <a href="services.html"><i class="icon-paste"></i><br />Oficinas</a>
+                                        <a href="Oficinas.jsp"><i class="icon-paste"></i><br />Oficinas</a>
                                     </li>
                                     <li id="Municipios">
                                         <a href="Municipios.jsp"><i class="icon-map-marker"></i><br />Municipios</a>
                                     </li>
                                     <li id="Departamentos">
-                                        <a href="contact.html"><i class="icon-road"></i><br />Departamentos</a>
+                                        <a href="Departamentos.jsp"><i class="icon-road"></i><br />Departamentos</a>
                                     </li>
                                     <li id="Boletas">
-                                        <a href="contact.html"><i class="icon-envelope-alt"></i><br />Boletas</a>
+                                        <a href="Boletas.jsp"><i class="icon-envelope-alt"></i><br />Boletas</a>
                                     </li>
                                     <li>
-                                        <a href="contact.html"><i class="icon-th"></i><br />Boleta/Descuento</a>
+                                        <a href="#"><i class="icon-th"></i><br />Boleta/Descuento</a>
                                     </li>
                                     <li id="Descuentos">
-                                        <a href="contact.html"><i class="icon-list"></i><br />Descuentos</a>
+                                        <a href="Descuentos.jsp"><i class="icon-list"></i><br />Descuentos</a>
                                     </li>
                                 </ul>
                             </div>
