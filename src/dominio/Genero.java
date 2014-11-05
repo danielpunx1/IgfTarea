@@ -1,16 +1,38 @@
 package dominio;
 
+import java.util.List;
+
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "genero", catalog = "clave2", schema = "")
 public class Genero {
 
+	@Id
+	@Basic(optional = false)
+	@Column(name = "id_sexo")
 	private String id_sexo;
-	private String sexo;
+	
+	@Basic(optional = false)
+	@Column(name="d_sexo")
+	private String d_sexo;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY,mappedBy = "genero" )
+	private List<Empleado> emplist;
 	
 	public Genero(){
 	}
 
 	public Genero(String id_sexo, String sexo) {
 		this.id_sexo = id_sexo;
-		this.sexo = sexo;
+		this.d_sexo = sexo;
 	}
 
 	public String getId_sexo() {
@@ -22,10 +44,19 @@ public class Genero {
 	}
 
 	public String getSexo() {
-		return sexo;
+		return d_sexo;
 	}
 
 	public void setSexo(String sexo) {
-		this.sexo = sexo;
+		this.d_sexo = sexo;
 	}
+	
+	public List<Empleado> getEmplist() {
+		return emplist;
+	}
+
+	public void setEmplist(List<Empleado> emplist) {
+		this.emplist = emplist;
+	}
+	
 }

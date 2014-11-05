@@ -17,4 +17,9 @@ public class CtrlEmpleado {
 		else
 			return false;
 	}
+	
+	public Empleado obtenerEmpleado(String id){
+		Empleado emp = (Empleado)daoEmpleado.daEmpleadoById(id);
+		return emp;
+	}
 }

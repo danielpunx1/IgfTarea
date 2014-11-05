@@ -8,14 +8,19 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+<<<<<<< HEAD
 import dominio.Puesto;
 import dominio.Oficina;
+=======
+
+import org.hibernate.annotations.ForeignKey;
+
+>>>>>>> 28a29413d1b798b401a293f49e4aef57a4116573
 @Entity
 @Table(name = "empleado", catalog = "clave2", schema = "")
 public class Empleado implements Serializable{
 	
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional = false)
 	@Column(name = "id_empleado")
 	private String id_empleado;
@@ -32,7 +37,7 @@ public class Empleado implements Serializable{
 	@ManyToOne(optional = false)
 	private Puesto id_puesto;
 	
-	@JoinColumn(name = "id_empleado", referencedColumnName = "id_empleado")
+	@JoinColumn(name = "id_oficina", referencedColumnName = "id_oficina")
 	@ManyToOne(optional = false)
 	private Oficina oficina;
 	
@@ -40,7 +45,8 @@ public class Empleado implements Serializable{
 	@ManyToOne(optional = false)
 	private Genero genero;
 	
-	@JoinColumn(name = "id_jefe", referencedColumnName = "id_jefe")
+	//@JoinColumn(name = "id_jefe", referencedColumnName = "id_jefe")
+	@ForeignKey(name="id_jefe")
 	@ManyToOne(optional = false)
 	private Empleado empleado;
 	
