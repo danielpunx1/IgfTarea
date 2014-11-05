@@ -1,16 +1,21 @@
 package dominio;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Oficina", catalog="clave2", schema="")
+@Table(name="oficina", catalog="clave2", schema="")
 
 public class Oficina implements Serializable{
 
@@ -21,8 +26,8 @@ public class Oficina implements Serializable{
 	@Column(name = "id_oficina",nullable=false,length=5)
 	private String id_oficina;
 	
-	@ManyToOne
-	@Column(name="id_municipio",nullable=false)
+	@JoinColumn(name = "id_municipio", referencedColumnName = "id_municipio")
+	@ManyToOne(optional = false)
 	private Municipio municipio;
 	
 	@Column(name="nomb_oficina",nullable=false,length=45)
@@ -30,12 +35,14 @@ public class Oficina implements Serializable{
 	
 	@Column(name="domicilio",nullable=false,length=100)
 	private String domicilio;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY,mappedBy = "oficina" )
+    private List<Empleado> emp;
 
 	private Oficina() {
 	}
 
-	public Oficina(String id_oficina, Municipio municipio, String nomb_oficina,
-			String domicilio) {
+	public Oficina(String id_oficina, Municipio municipio, String nomb_oficina,String domicilio) {
 		this.id_oficina = id_oficina;
 		this.municipio = municipio;
 		this.nomb_oficina = nomb_oficina;
@@ -72,6 +79,14 @@ public class Oficina implements Serializable{
 
 	public void setDomicilio(String domicilio) {
 		this.domicilio = domicilio;
+	}
+
+	public List<Empleado> getEmp() {
+		return emp;
+	}
+
+	public void setEmp(List<Empleado> emp) {
+		this.emp = emp;
 	}
 	
 	

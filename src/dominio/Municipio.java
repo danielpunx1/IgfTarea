@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "municipio", catalog = "zonas", schema = "")
+@Table(name = "municipio", catalog = "clave2", schema = "")
 public class Municipio implements Serializable {
 	private String id_municipio;
 	private Departamento depto;

@@ -49,6 +49,8 @@
         <mapping class="dominio.Genero"/>
         <mapping class="dominio.Oficina"/>
         <mapping class="dominio.Puesto"/>
+        <mapping class="dominio.Municipio"/>
+        <mapping class="dominio.Departamento"/>
 
     </session-factory>
 

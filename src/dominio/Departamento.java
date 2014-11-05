@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "departamento", catalog = "zonas", schema = "")
+@Table(name = "departamento", catalog = "clave2", schema = "")
 public class Departamento implements Serializable {
 	private String id_depto;
 	private String nombre_depto;
@@ -65,7 +65,7 @@ public class Departamento implements Serializable {
 	}
 
 	//Un departamento tiene varios municipios
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "departamento",  fetch=FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY ,mappedBy = "departamento")
 	public List<Municipio> getMunicipioList() {
 		return municipioList;
 	}
