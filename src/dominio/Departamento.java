@@ -10,9 +10,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "departamento", catalog = "clave2", schema = "")
 public class Departamento implements Serializable {
-	private String id_depto;
-	private String nombre_depto;
-	private String zona_geografica;
 	//private List<Municipio> municipioList;
 
 	private static final long serialVersionUID = 1L;
@@ -31,6 +28,8 @@ public class Departamento implements Serializable {
 	@Id
 	@Basic(optional = false)
 	@Column(name = "id_depto", length = 2)
+	private String id_depto;
+	
 	public String getIdDepto() {
 		return id_depto;
 	}
@@ -41,6 +40,8 @@ public class Departamento implements Serializable {
 
 	@Basic(optional = false)
 	@Column(name = "nombre_depto", length = 25)
+	private String nombre_depto;
+	
 	public String getNombreDepto() {
 		return nombre_depto;
 	}
@@ -51,6 +52,8 @@ public class Departamento implements Serializable {
 
 	@Basic(optional = false)
 	@Column(name = "zona_geografica", length = 25)
+	private String zona_geografica;
+	
 	public String getZonaGeografica() {
 		return zona_geografica;
 	}
