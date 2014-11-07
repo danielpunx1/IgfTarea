@@ -54,13 +54,21 @@ public class CtrlBoletaPagoDescuento {
 	public boolean eliminarBoletaPagoDescuento(Short id_boletapagodescuento) {
 		if (daoBoletaPD.daBoletaPagoDescuentoById(id_boletapagodescuento)!= null) {
 			BoletaPagoDescuento boletapagodescuento = daoBoletaPD.daBoletaPagoDescuentoById(id_boletapagodescuento);
+			
+			//Modificando la boleta de pago con el nuevo sueldo neto despues de eliminar un descuento
+			BoletaPago boletapago=boletapagodescuento.getBoletaPago();
+			double nuevo_saldo=boletapago.getSueldo_neto()+boletapagodescuento.getMontoDescuento();
+			
+			if(!bp.modificarBoletaPago(boletapago.getId_empleado(), boletapago.getPeriodo_pago(), nuevo_saldo))
+				return false; //No se pudo modificar pagoboleta con el nuevo sueldo_neto 
+			
 			daoBoletaPD.eliminar(boletapagodescuento);
 			return true;
 		} else
 			return false;
 	}
 
-	public boolean modificarBoletaPagoDescuento(Short id_boletapagodescuento, Short id_boletapago, String id_tiposdescuentos) {
+	/*public boolean modificarBoletaPagoDescuento(Short id_boletapagodescuento, Short id_boletapago, String id_tiposdescuentos) {
 		if (daoBoletaPD.daBoletaPagoDescuentoById(id_boletapagodescuento) != null) {
 			BoletaPagoDescuento boletapagodescuento = daoBoletaPD.daBoletaPagoDescuentoById(id_boletapagodescuento);
 			BoletaPago boletapago = daoBoletaP.daBoletaPagoById(id_boletapago);
@@ -74,7 +82,7 @@ public class CtrlBoletaPagoDescuento {
 			return true;
 		} else
 			return false;
-	}
+	}*/
 	
 	public List<BoletaPagoDescuento> daBoletaPagosDescuentos() {
 		return daoBoletaPD.daBoletaPagosDescuentos();
