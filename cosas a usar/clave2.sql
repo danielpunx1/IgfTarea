@@ -80,7 +80,7 @@ create table empleado
    id_empleado          varchar(5) not null,
    id_puesto            smallint,
    id_oficina           varchar(5),
-   id_sexo              varchar(1),
+   id_sexo              varchar(1) not null,
    id_jefe              varchar(5),
    nit                  varchar(14) not null,
    dui                  varchar(45) not null,
