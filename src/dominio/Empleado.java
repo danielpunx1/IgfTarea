@@ -95,7 +95,7 @@ public class Empleado implements Serializable{
 	@ManyToOne(optional = false)
 	private Empleado jefe;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "empleado" )
+	//@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "empleado" )
 	private List<BoletaPago> BPList;
 	
 	public Empleado(){
@@ -269,13 +269,13 @@ public class Empleado implements Serializable{
 		this.jefe = jefe;
 	}
 
-	public List<BoletaPago> getBPList() {
+	/*public List<BoletaPago> getBPList() {
 		return BPList;
 	}
 
 	public void setBPList(List<BoletaPago> bPList) {
 		BPList = bPList;
-	}
+	}*/
 		
 	
 }
