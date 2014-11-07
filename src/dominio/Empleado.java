@@ -91,7 +91,7 @@ public class Empleado implements Serializable{
 	@ManyToOne(optional = false)
 	private Oficina oficina;
 	
-	@JoinColumn(name = "id_jefe", referencedColumnName = "id_empleado")
+	@JoinColumn(name = "id_jefe", referencedColumnName = "id_jefe")
 	@ManyToOne(optional = false)
 	private Empleado jefe;
 	
