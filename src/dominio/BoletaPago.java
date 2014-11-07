@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+@SuppressWarnings("unused")
 @Entity
 @Table(name = "boletapago", catalog = "clave2", schema = "")
 
@@ -39,7 +40,7 @@ public class BoletaPago implements Serializable{
 	private String periodo_pago;
 	
 	@Column(name = "sueldo_neto")
-	private BigDecimal sueldo_neto;
+	private double sueldo_neto;
 	
 	/*@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY,mappedBy = "BoletaPago" )
 	private List<BoletaPagoDescuento> BPDList;
@@ -49,7 +50,7 @@ public class BoletaPago implements Serializable{
 		
 	}
 	
-	public BoletaPago(Empleado id_empleado, String periodo_pago, BigDecimal sueldo_neto){
+	public BoletaPago(Empleado id_empleado, String periodo_pago, double sueldo_neto){
 		this.id_empleado = id_empleado;
 		this.periodo_pago = periodo_pago;
 		this.sueldo_neto = sueldo_neto;
@@ -79,11 +80,11 @@ public class BoletaPago implements Serializable{
 		this.periodo_pago = periodo_pago;
 	}
 
-	public BigDecimal getSueldo_neto() {
+	public double getSueldo_neto() {
 		return sueldo_neto;
 	}
 
-	public void setSueldo_neto(BigDecimal sueldo_neto) {
+	public void setSueldo_neto(double sueldo_neto) {
 		this.sueldo_neto = sueldo_neto;
 	}
 	

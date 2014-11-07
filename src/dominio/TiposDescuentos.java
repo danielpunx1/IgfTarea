@@ -20,11 +20,17 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+@SuppressWarnings("unused")
 @Entity
 @Table(name = "tiposdescuentos", catalog = "clave2", schema = "")
 
 public class TiposDescuentos implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name = "id_tiposdescuentos", unique=true, nullable=false, length=5)
 	private String id_tiposdescuentos;
@@ -33,22 +39,22 @@ public class TiposDescuentos implements Serializable {
 	private String descripcion;
 	
 	@Column(name = "porcentaje_descuento", precision=5, scale=3)
-	private BigDecimal porcentaje_descuento;
+	private double porcentaje_descuento;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "fecha_ingreso", nullable=false)
 	private Date fecha_ingreso;
 	
-    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY,mappedBy = "tiposdescuentos" )
+    /*@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY,mappedBy = "tiposdescuentos" )
 	private List<BoletaPagoDescuento> BPDList;
-	private String BPDList;
+	private String BPDList;*/
 	
 	
 	public TiposDescuentos(){
 		
 	}
 	
-	public TiposDescuentos(String id_tiposdescuentos, String descripcion, BigDecimal porcentaje_descuento, Date fecha){
+	public TiposDescuentos(String id_tiposdescuentos, String descripcion, double porcentaje_descuento, Date fecha){
 		this.id_tiposdescuentos = id_tiposdescuentos;
 		this.descripcion = descripcion;
 		this.porcentaje_descuento = porcentaje_descuento;
@@ -71,11 +77,11 @@ public class TiposDescuentos implements Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public BigDecimal getPorcentaje_descuento() {
+	public double getPorcentaje_descuento() {
 		return porcentaje_descuento;
 	}
 
-	public void setPorcentaje_descuento(BigDecimal porcentaje_descuento) {
+	public void setPorcentaje_descuento(double porcentaje_descuento) {
 		this.porcentaje_descuento = porcentaje_descuento;
 	}
 

@@ -10,11 +10,12 @@ import dominio.Departamento;
 import dominio.Municipio;
 import dominio.TiposDescuentos;;
 
+@SuppressWarnings("unused")
 public class CtrlTiposDescuentos {
 
 	private TiposDescuentosDAO  daoDescuento = new TiposDescuentosDAO();
 	
-	public boolean crearDescuento(String id, String descripcion, BigDecimal porcentaje, Date fecha ){
+	public boolean crearDescuento(String id, String descripcion, double porcentaje, Date fecha ){
 		if(daoDescuento.daDescuentoById(id) == null)
 		{
 			TiposDescuentos nuevo = new TiposDescuentos(id,descripcion,porcentaje,fecha);
@@ -38,7 +39,7 @@ public class CtrlTiposDescuentos {
 			return false;
 	}
 	
-	public boolean modificarTipoDescuento(String id_tipodescuento, String descripcion, BigDecimal porcentaje ,Date fecha){
+	public boolean modificarTipoDescuento(String id_tipodescuento, String descripcion, double porcentaje ,Date fecha){
 		if ( daoDescuento.daDescuentoById(id_tipodescuento) != null) {
 			TiposDescuentos Descuento = daoDescuento.daDescuentoById(id_tipodescuento);
 			Descuento.setDescripcion(descripcion);

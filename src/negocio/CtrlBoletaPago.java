@@ -9,11 +9,12 @@ import dominio.BoletaPago;
 import dominio.Empleado;
 import dominio.TiposDescuentos;
 
+@SuppressWarnings("unused")
 public class CtrlBoletaPago {
 
 	private BoletaPagoDAO  daoBoleta = new BoletaPagoDAO();
 	
-	public boolean crearBoleta(Empleado empleado, String periodo, BigDecimal sueldo ){
+	public boolean crearBoleta(Empleado empleado, String periodo, double sueldo ){
 		if(daoBoleta.daBoletaPagoByPeriodo(periodo) == null)
 		{
 			BoletaPago nuevo = new BoletaPago(empleado,periodo,sueldo);
@@ -37,7 +38,7 @@ public class CtrlBoletaPago {
 			return false;
 	}
 	
-	public boolean modificarBoletaPago(Empleado empleado,String periodo, BigDecimal sueldo){
+	public boolean modificarBoletaPago(Empleado empleado,String periodo, double sueldo){
 		if(daoBoleta.daBoletaPagoByPeriodo(periodo) == null) 
 		{
 			BoletaPago boleta = daoBoleta.daBoletaPagoByPeriodo(periodo);
