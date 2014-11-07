@@ -97,8 +97,6 @@ public class Empleado implements Serializable{
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "empleado" )
 	private List<BoletaPago> BPList;
-	private String BPDList;
-	
 	
 	public Empleado(){
 	}
