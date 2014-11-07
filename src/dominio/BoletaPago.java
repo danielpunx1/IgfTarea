@@ -28,7 +28,7 @@ public class BoletaPago implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional = false)
 	@Column(name = "id_boletapago")
-	private Integer id_boletapago;
+	private Short id_boletapago;
 	
 	@JoinColumn(name = "id_empleado", referencedColumnName = "id_empleado")
 	@ManyToOne(optional = false)
@@ -55,11 +55,11 @@ public class BoletaPago implements Serializable{
 		this.sueldo_neto = sueldo_neto;
 	}
 
-	public int getId_boletapago() {
+	public Short getId_boletapago() {
 		return id_boletapago;
 	}
 
-	public void setId_boletapago(int id_boletapago) {
+	public void setId_boletapago(Short id_boletapago) {
 		this.id_boletapago = id_boletapago;
 	}
 

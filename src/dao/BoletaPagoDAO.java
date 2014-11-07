@@ -59,7 +59,7 @@ public class BoletaPagoDAO {
 		}
 	}
 	
-	public BoletaPago daBoletaPagoById(Integer ids){
+	public BoletaPago daBoletaPagoById(Short ids){
 		sesion = sessionFactory.openSession() ;
 		BoletaPago id = (BoletaPago) sesion.get(BoletaPago.class, ids);
 		sesion.close() ;

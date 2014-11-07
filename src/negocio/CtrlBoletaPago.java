@@ -2,6 +2,7 @@ package negocio;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 import dao.BoletaPagoDAO;
 import dominio.BoletaPago;
@@ -49,4 +50,11 @@ public class CtrlBoletaPago {
 			return false;
 	}
 	
+	public List<BoletaPago> daBoletaPagoAll() {
+		return daoBoleta.daBoletasPago();
+	}
+	
+	public BoletaPago daBoletaPagoById(Short id_boletapago) {
+		return daoBoleta.daBoletaPagoById(id_boletapago);
+	}
 }
