@@ -24,9 +24,6 @@ public class Genero {
 	@Column(name="d_sexo")
 	private String d_sexo;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY,mappedBy = "genero" )
-	private List<Empleado> emplist;
-	
 	public Genero(){
 	}
 
@@ -49,14 +46,5 @@ public class Genero {
 
 	public void setSexo(String sexo) {
 		this.d_sexo = sexo;
-	}
-	
-	public List<Empleado> getEmplist() {
-		return emplist;
-	}
-
-	public void setEmplist(List<Empleado> emplist) {
-		this.emplist = emplist;
-	}
-	
+	}	
 }
