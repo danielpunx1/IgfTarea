@@ -39,6 +39,7 @@ public class Oficina implements Serializable{
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY,mappedBy = "oficina" )
     private List<Empleado> emp;
 
+	@SuppressWarnings("unused")
 	private Oficina() {
 	}
 

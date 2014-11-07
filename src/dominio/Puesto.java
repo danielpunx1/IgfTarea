@@ -37,6 +37,7 @@ public class Puesto implements Serializable{
 	@Column(name="sueldo_max",nullable=false)
 	private BigDecimal sueldoMax;
 
+	@SuppressWarnings("unused")
 	private Puesto() {
 	}
 
