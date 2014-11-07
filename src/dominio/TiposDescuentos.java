@@ -45,7 +45,7 @@ public class TiposDescuentos implements Serializable {
 	//private String BPDList;
 	
 	
-	private TiposDescuentos(){
+	public TiposDescuentos(){
 		
 	}
 	

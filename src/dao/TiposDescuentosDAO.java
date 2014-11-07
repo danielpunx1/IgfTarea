@@ -1,11 +1,16 @@
 package dao;
 
+import java.util.List;
+
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
 
 import datos.HibernateUtil;
+import dominio.Municipio;
 import dominio.TiposDescuentos;;
 
 public class TiposDescuentosDAO {
@@ -39,11 +44,33 @@ public class TiposDescuentosDAO {
 		}
 	}
 	
+	public void eliminar(TiposDescuentos tipodes) {
+		try {
+			iniciaOperacion();
+			sesion.delete(tipodes);
+			tx.commit();
+			sesion.flush();
+		} catch (HibernateException he) {
+			manejaExcepcion(he);
+			throw he;
+		} finally {
+			sesion.close();
+		}
+	}
+	
 	public TiposDescuentos daDescuentoById(String ids){
 		sesion = sessionFactory.openSession() ;
 		TiposDescuentos id = (TiposDescuentos) sesion.get(TiposDescuentos.class, ids);
 		sesion.close() ;
 		return id ;
+	}
+	
+	public List<TiposDescuentos> daTiposDescuentos() {
+		sesion = sessionFactory.openSession();
+		Criteria criteria = sesion.createCriteria(TiposDescuentos.class).addOrder(Order.asc("id_tiposdescuentos"));
+		List<TiposDescuentos> Tiposdesc = criteria.list();
+		sesion.close();
+		return Tiposdesc;
 	}
 	
 }
