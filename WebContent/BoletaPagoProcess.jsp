@@ -5,31 +5,40 @@
 <%@ page import="java.util.*"%>
 <%
 	String mensaje="";
-	String id_municipio=request.getParameter("id_municipio");
-	CtrlMunicipio mun=new CtrlMunicipio();
-	CtrlDepartamento depto=new CtrlDepartamento();
-	Municipio municipio;
-	Departamento departamento;
+	//String id_municipio=request.getParameter("id_municipio");
+	//CtrlMunicipio mun=new CtrlMunicipio();
+	//CtrlDepartamento depto=new CtrlDepartamento();
+	Empleado empleado;
+	BoletaPago boleta;
+	CtrlBoletaPago bp = new CtrlBoletaPago();
+	CtrlEmpleado emp = new CtrlEmpleado();
 	
 	if(request.getParameter("accion").equalsIgnoreCase("eliminar")){//Para eliminar un registro
 	
-		if(mun.daMunicipioByIdMunicipio(id_municipio)!=null){
-			if(mun.eliminarMunicipio(id_municipio))
-				mensaje+="¡El municipio "+id_municipio+" fue eliminado correctamente!";
+		if( bp.daBoletaPagoById( (short)Integer.parseInt(request.getParameter("id_boletapago") ) ) != null)
+		{
+			if( bp.eliminarBoletaPago( (short)Integer.parseInt(request.getParameter("id_boletapago") ) ) )
+				mensaje+="¡La boleta de pago "+ request.getParameter("id_boletapago")  +" fue eliminada correctamente!";
 			else
-				mensaje+="¡No se pudo eliminar el municipio "+id_municipio+"!";
+				mensaje+="¡No se pudo eliminar la boleta de pago "+request.getParameter("id_boletapago")+"!";
 		}else
-			mensaje+="¡El id de municipio "+id_municipio+" no existe!";
+			mensaje+="¡La id de boleta de pago "+ request.getParameter("id_boletapago") +" no existe!";
 	
-	}else if(request.getParameter("accion").equalsIgnoreCase("editar")){//Para editar un registro
+	}
+	else if(request.getParameter("accion").equalsIgnoreCase("editar"))
+	{//Para editar un registro
 		
-		if(mun.daMunicipioByIdMunicipio(id_municipio)!=null){
-			if(mun.modificarMunicipio(id_municipio, request.getParameter("id_depto"), request.getParameter("nomb_municipio")))
+		if( bp.daBoletaPagoById( (short)Integer.parseInt(request.getParameter("id_boletapago") ) ) != null)
+		{
+			if( bp.modificarBoletaPago(request.getParameter("id_empleado"), periodo, sueldo) mun.modificarMunicipio(id_municipio, request.getParameter("id_depto"), request.getParameter("nomb_municipio")))
 				mensaje+="¡El municipio "+id_municipio+" fue modificado correctamente!";	
 			else
 				mensaje+="¡No se pudo modificar el municipio "+id_municipio+"!";
-		}else
+		}
+		else
+		{
 			mensaje+="!El id de municipio "+id_municipio+" no existe!";
+		}
 
 	}else if(request.getParameter("accion").equalsIgnoreCase("agregar")){//Para ingresar un nuevo registro
 		if(mun.daMunicipioByIdMunicipio(id_municipio)!=null)

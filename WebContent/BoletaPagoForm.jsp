@@ -33,29 +33,39 @@
 	String selectEmp = "";
 	CtrlEmpleado emple = new CtrlEmpleado();
 	
-	List<Empleado> listEmp = emple. deptos.daDepartamentos();
-	int numDeptos = listDeptos.size();
+	List<Empleado> listEmp = emple.daEmpleados();
 
-	if (listDeptos.isEmpty()) {
+	if (listEmp.isEmpty()) 
+	{
 		selectEmp = "<option value='000'>Vacio</option>";
-	} else {
-		Departamento deptoActual = new Departamento();
-		for (int i = 0; i < numDeptos; i++) {
-			deptoActual = (Departamento) listDeptos.get(i);
-			if(municipio.getIdMunicipio()!=null){
-				if (deptoActual.getIdDepto().equalsIgnoreCase(municipio.getDepto().getIdDepto())){
-					selectDeptos += "\n<option value='"
-							+ deptoActual.getIdDepto() + "' selected>"
-							+ deptoActual.getNombreDepto() + "</option>";
-				}else{
-					selectDeptos += "\n<option value='"
-							+ deptoActual.getIdDepto() + "'>"
-							+ deptoActual.getNombreDepto() + "</option>";
+	} else 
+	{
+		Empleado empActual = new Empleado();
+		for (int i = 0; i < listEmp.size(); i++) {
+			empActual = (Empleado) listEmp.get(i);
+			if( empActual.getId_empleado() != null)
+			{
+				if ( empActual.getId_empleado().equalsIgnoreCase(Boleta.getId_empleado().getId_empleado()) )
+				{
+					selectEmp += "\n<option value='"
+							+ empActual.getId_empleado() + "' selected>"
+							+ empActual.getNombres() +" " + empActual.getApellido_paterno() + " " 
+							+ empActual.getApellido_materno() + "</option>";
 				}
-			}else{
-				selectDeptos += "\n<option value='"
-						+ deptoActual.getIdDepto() + "'>"
-						+ deptoActual.getNombreDepto() + "</option>";
+				else
+				{
+					selectEmp += "\n<option value='"
+							+ empActual.getId_empleado() + "'>"
+							+ empActual.getNombres() +" " + empActual.getApellido_paterno() + " " 
+							+ empActual.getApellido_materno() + "</option>";
+				}
+			}
+			else
+			{
+				selectEmp += "\n<option value='"
+						+ empActual.getId_empleado() + "'>"
+						+ empActual.getNombres() +" " + empActual.getApellido_paterno() + " " 
+						+ empActual.getApellido_materno() + "</option>";
 			}
 		}
 	}
@@ -82,7 +92,7 @@
 			<div class="row">
 				<div class="span12">
 					<i class="icon-tasks page-title-icon"></i>
-					<h2>Municipios /</h2>
+					<h2>Boleta Pago /</h2>
 					<p><%=mensaje%></p>
 				</div>
 			</div>
@@ -92,14 +102,17 @@
 	<div>
 		<div class="contact-us container">
 			<div class="row">
-				<form method="post" action="municipioProcess.jsp">
+				<form method="post" action="BoletaPagoProcess.jsp">
 					<div class="otro span5" style="float: center">
-						<label for="id_municipio" class="nameLabel">Id Municipio</label> 
-						<input id="id_municipio" type="text" name="id_municipio" placeholder="Id Municipio"	value="<%=municipio.getIdMunicipio()%>" <%=readonly%> required> 
-						<label for="nomb_municipio" class="nameLabel">Nombre del Municipio</label> 
-						<input id="nomb_municipio" type="text" name="nomb_municipio" placeholder="Nombre del Municipio"	value="<%=municipio.getNombMunicipio()%>" required> 
-						<label for="id_depto">Departamento</label> 
-						<select name="id_depto" id="id_depto" class="form-control"><%=selectDeptos%></select>
+						<label for="id_empleado">Empleado</label> 
+						<select name="id_empleado" id="id_empleado" class="form-control"><%=selectEmp%></select>
+						
+						<label for="periodo" class="nameLabel">Periodo de pago</label> 
+						<input id="periodo" type="text" name="periodoI" value="<%= Boleta.getPeriodo_pago()%>" required> 
+						
+						<label for="sueldo" class="nameLabel">Sueldo neto</label> 
+						<input id="sueldo" type="text" name="sueldo" placeholder="ingrese el sueldo"	value="<%=Boleta.getSueldo_neto()%>" required> 
+				
 						<button type="submit" style="float: right;">Guardar</button>
 					</div>
 					<!--

@@ -39,9 +39,9 @@ public class TiposDescuentos implements Serializable {
 	@Column(name = "fecha_ingreso", nullable=false)
 	private Date fecha_ingreso;
 	
-   /* @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY,mappedBy = "tiposdescuentos" )
+    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY,mappedBy = "tiposdescuentos" )
 	private List<BoletaPagoDescuento> BPDList;
-	private String BPDList;*/
+	private String BPDList;
 	
 	
 	public TiposDescuentos(){

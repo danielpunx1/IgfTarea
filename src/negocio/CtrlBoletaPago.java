@@ -26,11 +26,11 @@ public class CtrlBoletaPago {
 		}
 	}
 	
-	public boolean eliminarBoletaPago(Empleado empleado,String periodo,BigDecimal sueldo) 
+	public boolean eliminarBoletaPago(Short id) 
 	{
-		if(daoBoleta.daBoletaPagoByPeriodo(periodo) == null)
+		if(daoBoleta.daBoletaPagoById(id)== null)
 		{
-			BoletaPago boleta = daoBoleta.daBoletaPagoByPeriodo(periodo);
+			BoletaPago boleta = daoBoleta.daBoletaPagoById(id);
 			daoBoleta.eliminar(boleta);
 			return true;
 		} else
