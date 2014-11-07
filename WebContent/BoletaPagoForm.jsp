@@ -33,7 +33,7 @@
 	String selectEmp = "";
 	CtrlEmpleado emple = new CtrlEmpleado();
 	
-	List<Departamento> listDeptos = deptos.daDepartamentos();
+	List<Empleado> listEmp = emple. deptos.daDepartamentos();
 	int numDeptos = listDeptos.size();
 
 	if (listDeptos.isEmpty()) {

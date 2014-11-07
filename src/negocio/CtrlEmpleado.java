@@ -9,6 +9,7 @@ import dominio.Empleado;
 import dominio.Genero;
 import dominio.Oficina;
 import dominio.Puesto;
+import dominio.TiposDescuentos;
 import negocio.*;
 
 public class CtrlEmpleado {
@@ -42,5 +43,9 @@ public class CtrlEmpleado {
 
 	public Empleado daEmpleadoById(String idEmple) {
 		return daoEmpleado.daEmpleadoById(idEmple);
+	}
+	
+	public List<Empleado> daEmpleados() {
+		return daoEmpleado.daEmpleados();
 	}
 }
