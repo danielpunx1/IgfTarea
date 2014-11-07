@@ -1,4 +1,5 @@
 package dao;
+
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -6,10 +7,12 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+
 import datos.HibernateUtil;
 import dominio.Empleado;
+import dominio.Genero;
 
-public class EmpleadoDAO {
+public class GeneroDAO {
 
 	private HibernateUtil hibernateUtil = new HibernateUtil() ;
 	private SessionFactory sessionFactory = hibernateUtil.getSessionFactory();
@@ -26,10 +29,10 @@ public class EmpleadoDAO {
 		throw new HibernateException("Ocurrió un error en la capa DAO", he);
 	}
 	
-	public void guardaActualiza(Empleado empleado) {
+	public void guardaActualiza(Genero genero) {
 		try {
 			iniciaOperacion() ;
-			sesion.saveOrUpdate(empleado);
+			sesion.saveOrUpdate(genero);
 			tx.commit() ;
 			sesion.flush() ;
 		} catch (HibernateException he) {
@@ -40,10 +43,10 @@ public class EmpleadoDAO {
 		}
 	}
 	
-	public void eliminar(Empleado empleado) {
+	public void eliminar(Genero genero) {
 		try {
 			iniciaOperacion();
-			sesion.delete(empleado);
+			sesion.delete(genero);
 			tx.commit();
 			sesion.flush();
 		} catch (HibernateException he) {
@@ -53,20 +56,19 @@ public class EmpleadoDAO {
 			sesion.close();
 		}
 	}
-	
 	@SuppressWarnings("unchecked")
-	public List<Empleado> daEmpleados() {
+	public List<Genero> daGeneros() {
 		sesion = sessionFactory.openSession();
-		Query query = sesion.getNamedQuery("Empleado.findAll");
-		List<Empleado> empleados = query.list();
+		Query query = sesion.getNamedQuery("Genero.findAll");
+		List<Genero> genero = query.list();
 		sesion.close();
-		return empleados;
+		return genero;
 	}
 	
-	public Empleado daEmpleadoById(String idEmpleado){
+	public Genero daGeneroById(String idGenero){
 		sesion = sessionFactory.openSession() ;
 		// Retorna la instancia persistente de la clase por medio del atributo identidad
-		Empleado id = (Empleado) sesion.get(Empleado.class, new String(idEmpleado)) ;
+		Genero id = (Genero) sesion.get(Genero.class, new String(idGenero)) ;
 		sesion.close() ;
 		return id;
 	}
