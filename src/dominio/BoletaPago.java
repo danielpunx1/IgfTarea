@@ -41,9 +41,9 @@ public class BoletaPago implements Serializable{
 	@Column(name = "sueldo_neto")
 	private BigDecimal sueldo_neto;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY,mappedBy = "BoletaPago" )
+	/*@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY,mappedBy = "BoletaPago" )
 	private List<BoletaPagoDescuento> BPDList;
-	private String BPDList;
+	private String BPDList;*/
 	
 	public BoletaPago(){
 		
