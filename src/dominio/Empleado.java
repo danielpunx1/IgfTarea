@@ -92,7 +92,7 @@ public class Empleado implements Serializable{
 	private Oficina oficina;
 	
 	@JoinColumn(name = "id_jefe", referencedColumnName = "id_empleado")
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = true)
 	private Empleado jefe;
 	
 	//@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "empleado" )

@@ -5,12 +5,12 @@
 <%@ page import="java.util.*"%>
 
 <%
-	String html = "<table class='table'>\n<tr><th>Id Empleado</th><th>Nombre Empleado</th><th>Apellido 1</th><th>Apellido 2</th><th>DUI</th><th>NIT</th><th>Fecha de Nacimiento</th><th>Fecha de Ingreso</th><th>Sueldo</th><th>Email</th><th>Telefono</th><th>Activo</th><th style='text-align:center'><a href='empleadosForm.jsp' class='btn btn-success'>Nuevo Empleado</a></th></tr>\n";
+	String html = "<table class='table'>\n<tr><th>Nombre Empleado</th><th>Apellido 1</th><th>Apellido 2</th><th>Activo</th><th>Jefe</th><th style='text-align:center'><a href='empleadosForm.jsp' class='btn btn-success'>Nuevo Empleado</a></th></tr>\n";
 	CtrlEmpleado emp = new CtrlEmpleado();
 	List<Empleado> empleados = emp.daEmpleados();
 	int numEmpleados = empleados.size();
 	
-	if(empleados.isEmpty()){
+	/*if(empleados.isEmpty()){
 		html += "<tr><td colspan='3'>No hay Empleados</td></tr>\n";
 	}
 	else {
@@ -29,16 +29,47 @@
 					+ munActual.getIdMunicipio() 
 					+"&accion=eliminar' class='btn btn-danger'>Eliminar</a></div></td></tr>\n";
 		}
-	}
+	}*/
 	html += "</table>";
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Empleados</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<jsp:include page="includes/links.jsp"></jsp:include>
+
 </head>
 <body>
 
+	<jsp:include page="includes/header.jsp"></jsp:include>
+
+	<!-- Page Title -->
+	<div class="page-title" style="height: 40px">
+		<div class="container">
+			<div class="row">
+				<div class="span12">
+					<i class="icon-tasks page-title-icon"></i>
+					<h2>Municipios /</h2>
+					<p>Mantenimiento a tabla Municipios</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div>
+		<!-- Services -->
+		<div class="what-we-do container">
+			<div class='table-responsive'>
+				<%=html%>
+			</div>
+		</div>
+	</div>
+
+	<jsp:include page="includes/footer.jsp"></jsp:include>
 </body>
 </html>

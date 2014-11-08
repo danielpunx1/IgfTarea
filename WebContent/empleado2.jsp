@@ -6,30 +6,32 @@
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="java.util.Date"%>
 <%
-	String ident = request.getParameter("idemp");
-	String names = request.getParameter("nombres");
-	String apellido1 = request.getParameter("ape1");
-	String apellido2 = request.getParameter("ape2");
-	String nitribut = request.getParameter("nit");
-	String docunico = request.getParameter("dui");
+	String id_empleado = request.getParameter("idemp");
+	String nombres = request.getParameter("nombres");
+	String apellido_paterno = request.getParameter("ape1");
+	String apellido_materno = request.getParameter("ape2");
+	String nit = request.getParameter("nit");
+	String dui = request.getParameter("dui");
 	SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-	Date fnacimiento = formato.parse(request.getParameter("fechanac"));
-	Date fingreso = formato.parse(request.getParameter("fechaing"));
-	Double sueld = Double.parseDouble(request.getParameter("sueldo"));
+	Date fecha_nacimiento = formato.parse(request.getParameter("fechanac"));
+	Date fecha_ingreso = formato.parse(request.getParameter("fechaing"));
+	Double sueldo = Double.parseDouble(request.getParameter("sueldo"));
 	//Date fnacimiento, fingreso;
-	String correoelectronico = request.getParameter("email");
+	String email = request.getParameter("email");
 	String telefono = request.getParameter("telef");
-	String esactive = request.getParameter("activo");
+	String activo = request.getParameter("activo");
 	
-	String genero = request.getParameter("genero");
-	String oficina = request.getParameter("oficina");
-	int puesto = Integer.parseInt(request.getParameter("puesto"));
-	String empleado = request.getParameter("empleado");
+	String id_genero = request.getParameter("genero");
+	String id_oficina = request.getParameter("oficina");
+	int id_puesto = Integer.parseInt(request.getParameter("puesto"));
+	String id_jefe = request.getParameter("empleado");
 	String mensaje="";
 	CtrlEmpleado ctrlempleado = new CtrlEmpleado();
 	
-	if(ctrlempleado.daEmpleadoById(ident)==null){
-		ctrlempleado.crearEmpleado(ident, nitribut, docunico, names, apellido1, apellido2, fnacimiento, fingreso, sueld, correoelectronico, telefono, esactive, genero, puesto, oficina, empleado);
+	if(ctrlempleado.daEmpleadoById(id_empleado)==null){
+		ctrlempleado.crearEmpleado(id_empleado, nit, dui, nombres, apellido_paterno, apellido_materno, 
+				fecha_nacimiento, fecha_ingreso, sueldo, email, telefono, activo,
+				id_genero, id_puesto, id_oficina, id_jefe);
 		mensaje = "Se inserto esta babosada!!! xD";
 	}
 	else
