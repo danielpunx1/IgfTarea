@@ -24,37 +24,48 @@
 		}else
 			mensaje+="¡La id de boleta de pago "+ request.getParameter("id_boletapago") +" no existe!";
 	
-	}
+	} 
 	else if(request.getParameter("accion").equalsIgnoreCase("editar"))
 	{//Para editar un registro
-		
-		if( bp.daBoletaPagoById( (short)Integer.parseInt(request.getParameter("id_boletapago") ) ) != null)
-		{
-			if( bp.modificarBoletaPago(request.getParameter("id_empleado"), periodo, sueldo) mun.modificarMunicipio(id_municipio, request.getParameter("id_depto"), request.getParameter("nomb_municipio")))
-				mensaje+="¡El municipio "+id_municipio+" fue modificado correctamente!";	
+		int ids = Integer.parseInt(request.getParameter("id_boletapago") );
+		if( bp.daBoletaPagoById( (short)ids ) != null )
+		{ 
+			empleado = emp.daEmpleadoById(request.getParameter("id_empleado"));
+			double salario = Double.parseDouble(request.getParameter("sueldo"));
+			String periodo = request.getParameter("periodo");
+			if( bp.modificarBoletaPago((short)ids,empleado, periodo,salario )) 
+				mensaje+="¡La boletad de pago "+request.getParameter("id_boletapago")+" fue modificada correctamente!";	
 			else
-				mensaje+="¡No se pudo modificar el municipio "+id_municipio+"!";
+				mensaje+="¡No se pudo modificar la boleta de pago "+request.getParameter("id_boletapago")+"!";
 		}
 		else
 		{
-			mensaje+="!El id de municipio "+id_municipio+" no existe!";
+			mensaje+="!La id de boleta de pago "+request.getParameter("id_boletapago")+" no existe!";
 		}
 
-	}else if(request.getParameter("accion").equalsIgnoreCase("agregar")){//Para ingresar un nuevo registro
-		if(mun.daMunicipioByIdMunicipio(id_municipio)!=null)
-			mensaje+="!El id de municipio "+id_municipio+" ya existe!";
-		else
-			if(mun.crearMunicipio(id_municipio, request.getParameter("id_depto"), request.getParameter("nomb_municipio")))
-				mensaje+="!El municipio "+id_municipio+" fue ingresado correctamente!";
+	}
+	else if(request.getParameter("accion").equalsIgnoreCase("agregar"))
+	{//Para ingresar un nuevo registro
+		//if( bp.daBoletaPagoById( (short)Integer.parseInt(request.getParameter("id_boletapago") ) ) != null)
+		//	mensaje+="!La id de boleta de pago "+request.getParameter("id_boletapago")+" ya existe!";
+		//else
+		//{
+			empleado = emp.daEmpleadoById(request.getParameter("id_empleado"));
+			double varSaldo = Double.parseDouble(request.getParameter("sueldo"));
+			if( bp.crearBoleta(empleado, request.getParameter("periodo"), varSaldo)) 
+				mensaje+="!La boleata de pago fue ingresada correctamente!";
 			else
-				mensaje+="!No se pudo ingresar el registro "+id_municipio+"!";
-	}else{ //Cualquier otro error
+				mensaje+="!No se pudo ingresar la boleta de pago!";
+		//}
+	}
+	else
+	{ //Cualquier otro error
 		mensaje+="¡Error! Los parametros proporcionados no son correctos";
 	}
 	//Esot es para que despues de realizar la accion regrese a la pagina principal de Municipios.jsp
 	mensaje+="<meta http-equiv='REFRESH' content='3,url=" 
 		+ request.getRequestURL().toString().replace(request.getRequestURI().toString(), "") 
-		+ request.getContextPath()+"/Municipios.jsp'>";
+		+ request.getContextPath()+"/BoletaPago.jsp'>";
 %>
 <!DOCTYPE html>
 <html lang="es">
@@ -78,7 +89,7 @@
 			<div class="row">
 				<div class="span12">
 					<i class="icon-tasks page-title-icon"></i>
-					<h2>Municipios /</h2>
+					<h2>Boleta Pago /</h2>
 					<p><%=mensaje%></p>
 				</div>
 			</div>

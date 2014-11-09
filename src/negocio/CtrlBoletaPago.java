@@ -14,7 +14,7 @@ public class CtrlBoletaPago {
 
 	private BoletaPagoDAO  daoBoleta = new BoletaPagoDAO();
 	
-	public boolean crearBoleta(Empleado empleado, String periodo, double sueldo ){
+	public boolean crearBoleta(Empleado empleado, String periodo, Double sueldo ){
 		if(daoBoleta.daBoletaPagoByPeriodo(periodo) == null)
 		{
 			BoletaPago nuevo = new BoletaPago(empleado,periodo,sueldo);
@@ -38,10 +38,11 @@ public class CtrlBoletaPago {
 			return false;
 	}
 	
-	public boolean modificarBoletaPago(Empleado empleado,String periodo, double sueldo){
+	public boolean modificarBoletaPago(Short id,Empleado empleado,String periodo, double sueldo){
 		if(daoBoleta.daBoletaPagoByPeriodo(periodo) == null) 
 		{
-			BoletaPago boleta = daoBoleta.daBoletaPagoByPeriodo(periodo);
+			//BoletaPago boleta = daoBoleta.daBoletaPagoByPeriodo(periodo);
+			BoletaPago boleta = daoBoleta.daBoletaPagoById(id);
 			boleta.setId_empleado(empleado);
 			boleta.setPeriodo_pago(periodo);
 			boleta.setSueldo_neto(sueldo);

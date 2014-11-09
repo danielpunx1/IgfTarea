@@ -30,7 +30,7 @@
 	}
 
 	//Esto solo se va a hacer cuando quieran poner un select con un listado de otra tabla
-	String selectEmp = "";
+    String selectEmp = "";
 	CtrlEmpleado emple = new CtrlEmpleado();
 	
 	List<Empleado> listEmp = emple.daEmpleados();
@@ -42,8 +42,9 @@
 	{
 		Empleado empActual = new Empleado();
 		for (int i = 0; i < listEmp.size(); i++) {
-			empActual = (Empleado) listEmp.get(i);
-			if( empActual.getId_empleado() != null)
+			empActual = (Empleado)listEmp.get(i);
+			//if( empActual.getId_empleado() != null)
+			if( accion.equalsIgnoreCase("editar") )
 			{
 				if ( empActual.getId_empleado().equalsIgnoreCase(Boleta.getId_empleado().getId_empleado()) )
 				{
@@ -68,13 +69,13 @@
 						+ empActual.getApellido_materno() + "</option>";
 			}
 		}
-	}
+	}  
 %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Municipios</title>
+<title>Boleta Pago</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -105,13 +106,13 @@
 				<form method="post" action="BoletaPagoProcess.jsp">
 					<div class="otro span5" style="float: center">
 						<label for="id_empleado">Empleado</label> 
-						<select name="id_empleado" id="id_empleado" class="form-control"><%=selectEmp%></select>
+						<select name="id_empleado" id="id_empleado" class="form-control"> <%=selectEmp%> </select>
 						
 						<label for="periodo" class="nameLabel">Periodo de pago</label> 
-						<input id="periodo" type="text" name="periodoI" value="<%= Boleta.getPeriodo_pago()%>" required> 
+						<input id="periodo" type="text" name="periodo" value="<%= Boleta.getPeriodo_pago()%>" required> 
 						
 						<label for="sueldo" class="nameLabel">Sueldo neto</label> 
-						<input id="sueldo" type="text" name="sueldo" placeholder="ingrese el sueldo"	value="<%=Boleta.getSueldo_neto()%>" required> 
+						<input id="sueldo" type="text" name="sueldo" placeholder="ingrese el sueldo" value="<%=Boleta.getSueldo_neto()%>" required> 
 				
 						<button type="submit" style="float: right;">Guardar</button>
 					</div>
@@ -121,6 +122,7 @@
 						existente
 					-->
 					<input type="hidden" name="accion" value="<%=accion%>">
+					<input type="hidden" name="id_boletapago" value="<%=Boleta.getId_boletapago()%>">
 				</form>
 
 			</div>

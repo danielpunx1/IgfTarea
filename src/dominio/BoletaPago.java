@@ -43,14 +43,13 @@ public class BoletaPago implements Serializable{
 	private double sueldo_neto;
 	
 	/*@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY,mappedBy = "BoletaPago" )
-	private List<BoletaPagoDescuento> BPDList;
-	private String BPDList;*/
+	private List<BoletaPagoDescuento> BPDList;*/
 	
 	public BoletaPago(){
 		
 	}
 	
-	public BoletaPago(Empleado id_empleado, String periodo_pago, double sueldo_neto){
+	public BoletaPago(Empleado id_empleado, String periodo_pago, Double sueldo_neto){
 		this.id_empleado = id_empleado;
 		this.periodo_pago = periodo_pago;
 		this.sueldo_neto = sueldo_neto;
@@ -87,5 +86,7 @@ public class BoletaPago implements Serializable{
 	public void setSueldo_neto(double sueldo_neto) {
 		this.sueldo_neto = sueldo_neto;
 	}
+
+	
 	
 }
