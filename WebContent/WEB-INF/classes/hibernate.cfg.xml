@@ -50,6 +50,7 @@
         <mapping class="dominio.Genero"/>
         <mapping class="dominio.Empleado"/>
         <mapping class="dominio.BoletaPago"/>
+        <mapping class="dominio.BoletaPagoDescuento"/>
         <mapping class="dominio.TiposDescuentos"/>
 
     </session-factory>

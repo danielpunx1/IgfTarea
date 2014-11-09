@@ -3,7 +3,6 @@
 <%@ page import="negocio.*"%>
 <%@ page import="dominio.*"%>
 <%@ page import="java.util.*"%>
-
 <%
 	String html = "<table class='table'>\n<tr><th>Id Municipio</th><th>Nombre Municipio</th><th>Departamento</th><th style='text-align:center'><a href='municipioForm.jsp' class='btn btn-success'>Nuevo Municipio</a></th></tr>\n";
 	CtrlMunicipio mun = new CtrlMunicipio();
@@ -31,6 +30,7 @@
 	}
 	html += "</table>";
 %>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

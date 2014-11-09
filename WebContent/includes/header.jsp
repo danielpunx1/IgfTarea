@@ -36,7 +36,7 @@
                                         <a href="Boletas.jsp"><i class="icon-envelope-alt"></i><br />Boletas</a>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-th"></i><br />Boleta/Descuento</a>
+                                        <a href="BoletaPagoDescuento.jsp"><i class="icon-th"></i><br />Descuentos/Pagos</a>
                                     </li>
                                     <li id="Descuentos">
                                         <a href="Descuentos.jsp"><i class="icon-list"></i><br />Descuentos</a>

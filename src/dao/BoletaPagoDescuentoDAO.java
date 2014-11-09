@@ -60,7 +60,7 @@ public class BoletaPagoDescuentoDAO {
 		}
 	}
 
-	public BoletaPagoDescuento daBoletaPagoDescuentoById(int id_boletapagodescuento) {
+	public BoletaPagoDescuento daBoletaPagoDescuentoById(Short id_boletapagodescuento) {
 		sesion = sessionFactory.openSession();
 		BoletaPagoDescuento boletapagodescuento = (BoletaPagoDescuento) sesion.get(BoletaPagoDescuento.class, id_boletapagodescuento);
 		sesion.close();
@@ -68,9 +68,9 @@ public class BoletaPagoDescuentoDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<BoletaPagoDescuento> daBoletaPagoDescuentoByIdBoletaPago(int id_boletapago) {
+	public List<BoletaPagoDescuento> daBoletaPagoDescuentoByIdBoletaPago(Short id_boletapago) {
 		sesion = sessionFactory.openSession();
-		Criteria criteria = sesion.createCriteria(BoletaPagoDescuento.class).add(Restrictions.like("id_boletapago", id_boletapago));
+		Criteria criteria = sesion.createCriteria(BoletaPagoDescuento.class).add(Restrictions.like("boletapago.id_boletapago", id_boletapago));
 		List<BoletaPagoDescuento> boletapagosdescuentos = (List<BoletaPagoDescuento>) criteria.list();
 		sesion.close();
 		return boletapagosdescuentos;
@@ -79,16 +79,16 @@ public class BoletaPagoDescuentoDAO {
 	@SuppressWarnings("unchecked")
 	public List<BoletaPagoDescuento> daBoletaPagosDescuentos() {
 		sesion = sessionFactory.openSession();
-		Criteria criteria = sesion.createCriteria(BoletaPagoDescuento.class).addOrder(Order.asc("id_boletapago"));
+		Criteria criteria = sesion.createCriteria(BoletaPagoDescuento.class).addOrder(Order.asc("boletapago.id_boletapago"));
 		List<BoletaPagoDescuento> boletapagodescuentos = criteria.list();
 		sesion.close();
 		return boletapagodescuentos;
 	}
 	
-	public Boolean tipoDescuentoAplicado(int id_boletapago, String id_tiposdescuentos){ //Verifica si ya se le ha aplicado un tipo de descuento especifico
+	public Boolean tipoDescuentoAplicado(Short id_boletapago, String id_tiposdescuentos){ //Verifica si ya se le ha aplicado un tipo de descuento especifico
 		sesion = sessionFactory.openSession();
-		Criteria criteria = sesion.createCriteria(BoletaPagoDescuento.class).add(Restrictions.like("id_boletapago", id_boletapago));
-		criteria.add(Restrictions.like("id_tiposdescuentos", id_tiposdescuentos));
+		Criteria criteria = sesion.createCriteria(BoletaPagoDescuento.class).add(Restrictions.like("boletapago.id_boletapago", id_boletapago));
+		criteria.add(Restrictions.like("tiposdescuentos.id_tiposdescuentos", id_tiposdescuentos));
 		BoletaPagoDescuento boletapagodescuento = (BoletaPagoDescuento) criteria.uniqueResult();
 		if(boletapagodescuento!=null)
 			return true;
