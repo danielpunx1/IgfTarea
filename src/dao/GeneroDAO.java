@@ -2,11 +2,14 @@ package dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 
 import datos.HibernateUtil;
 import dominio.Empleado;
@@ -59,8 +62,10 @@ public class GeneroDAO {
 	@SuppressWarnings("unchecked")
 	public List<Genero> daGeneros() {
 		sesion = sessionFactory.openSession();
-		Query query = sesion.getNamedQuery("Genero.findAll");
-		List<Genero> genero = query.list();
+		//Query query = sesion.getNamedQuery("Genero.findAll");
+		//List<Genero> genero = query.list();
+		Criteria criteria = sesion.createCriteria(Genero.class).addOrder(Order.asc("id_sexo"));
+		List<Genero> genero = criteria.list();
 		sesion.close();
 		return genero;
 	}
@@ -68,8 +73,19 @@ public class GeneroDAO {
 	public Genero daGeneroById(String idGenero){
 		sesion = sessionFactory.openSession() ;
 		// Retorna la instancia persistente de la clase por medio del atributo identidad
-		Genero id = (Genero) sesion.get(Genero.class, new String(idGenero)) ;
+		Genero id = (Genero) sesion.get(Genero.class, idGenero) ;
 		sesion.close() ;
 		return id;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Genero> daGeneroByIdempleado(String id_empleado) {
+		sesion = sessionFactory.openSession();
+		//Query query = sesion.getNamedQuery("Departamentos.findAll");
+		//List<Departamento> departamentos = query.list();
+		Criteria criteria = sesion.createCriteria(Genero.class).add(Restrictions.like("id_empleado", id_empleado));
+		List<Genero> genero = (List<Genero>) criteria.list();
+		sesion.close();
+		return genero;
 	}
 }
