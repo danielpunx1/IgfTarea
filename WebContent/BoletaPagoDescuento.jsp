@@ -29,7 +29,9 @@
 					+ descuentoActual.getBoletaPago().getPeriodo_pago()
 					+ "</td><td>"
 					+ descuentoActual.getMontoDescuento()
-					+ "</td><td style='text-align:center'><div class='btn-group btn-group-sm'><a href='boletaPagoDescuentoProcess.jsp?id_boletapagodescuento="
+					+ "</td><td style='text-align:center'><div class='btn-group btn-group-sm'><a href='boletaPagoDescuentoForm.jsp?id_boletapagodescuento="
+					+ descuentoActual.getIdBoletaPagoDescuento()
+					+ "' class='btn btn-warning'>Editar</a><a href='boletaPagoDescuentoProcess.jsp?id_boletapagodescuento="
 					+ descuentoActual.getIdBoletaPagoDescuento()
 					+"&accion=eliminar' class='btn btn-danger'>Eliminar</a></div></td></tr>\n";
 		}

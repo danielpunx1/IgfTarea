@@ -31,16 +31,48 @@ public class BoletaPago implements Serializable{
 	@Column(name = "id_boletapago")
 	private Short id_boletapago;
 	
+	public Short getId_boletapago() {
+		return id_boletapago;
+	}
+
+	public void setId_boletapago(Short id_boletapago) {
+		this.id_boletapago = id_boletapago;
+	}
+	
 	@JoinColumn(name = "id_empleado", referencedColumnName = "id_empleado")
 	@ManyToOne(optional = false)
 	private Empleado id_empleado;
+	
+	public Empleado getId_empleado() {
+		return id_empleado;
+	}
+
+	public void setId_empleado(Empleado id_empleado) {
+		this.id_empleado = id_empleado;
+	}
 	
 	@Basic(optional = false)
 	@Column(name = "periodo_pago")
 	private String periodo_pago;
 	
+	public String getPeriodo_pago() {
+		return periodo_pago;
+	}
+
+	public void setPeriodo_pago(String periodo_pago) {
+		this.periodo_pago = periodo_pago;
+	}
+	
 	@Column(name = "sueldo_neto")
 	private double sueldo_neto;
+	
+	public double getSueldo_neto() {
+		return sueldo_neto;
+	}
+
+	public void setSueldo_neto(double sueldo_neto) {
+		this.sueldo_neto = sueldo_neto;
+	}
 	
 	/*@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY,mappedBy = "BoletaPago" )
 	private List<BoletaPagoDescuento> BPDList;
@@ -55,37 +87,6 @@ public class BoletaPago implements Serializable{
 		this.periodo_pago = periodo_pago;
 		this.sueldo_neto = sueldo_neto;
 	}
-
-	public Short getId_boletapago() {
-		return id_boletapago;
-	}
-
-	public void setId_boletapago(Short id_boletapago) {
-		this.id_boletapago = id_boletapago;
-	}
-
-	public Empleado getId_empleado() {
-		return id_empleado;
-	}
-
-	public void setId_empleado(Empleado id_empleado) {
-		this.id_empleado = id_empleado;
-	}
-
-	public String getPeriodo_pago() {
-		return periodo_pago;
-	}
-
-	public void setPeriodo_pago(String periodo_pago) {
-		this.periodo_pago = periodo_pago;
-	}
-
-	public double getSueldo_neto() {
-		return sueldo_neto;
-	}
-
-	public void setSueldo_neto(double sueldo_neto) {
-		this.sueldo_neto = sueldo_neto;
-	}
+	
 	
 }

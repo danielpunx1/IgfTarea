@@ -97,7 +97,7 @@
 						<%=input_text%>
 						
 						<label for="id_boletapago" class="nameLabel">Boleta de Pago</label> 
-						<input id="id_boletapago" type="text" name="id_boletapago" placeholder="Id Boleta de Pago"	required> 
+						<input id="id_boletapago" type="text" name="id_boletapago" placeholder="Id Boleta de Pago"	required <%=readonly%>> 
 						<label for="id_tiposdescuentos">Tipo de Descuento</label> 
 						<select name="id_tiposdescuentos" id="id_tiposdescuentos" class="form-control"><%=selectTD%></select>
 						<button type="submit" style="float: right;">Guardar</button>

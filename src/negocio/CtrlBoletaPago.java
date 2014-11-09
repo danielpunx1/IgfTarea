@@ -39,7 +39,7 @@ public class CtrlBoletaPago {
 	}
 	
 	public boolean modificarBoletaPago(Empleado empleado,String periodo, double sueldo){
-		if(daoBoleta.daBoletaPagoByPeriodo(periodo) == null) 
+		if(daoBoleta.daBoletaPagoByPeriodo(periodo) != null) 
 		{
 			BoletaPago boleta = daoBoleta.daBoletaPagoByPeriodo(periodo);
 			boleta.setId_empleado(empleado);
