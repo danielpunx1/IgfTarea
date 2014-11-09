@@ -46,6 +46,30 @@
 			mensaje+="¡Error. No existe la boleta de pago indicada";
 			break;
 		}
+	}else if(accion.equalsIgnoreCase("editar")){
+		String id_tiposdescuentos = request.getParameter("id_tiposdescuentos");
+		Short id_boletapagodescuento = Short.parseShort(request.getParameter("id_boletapagodescuento"));
+		
+		switch (bpd.modificarBoletaPagoDescuento(id_boletapagodescuento, id_tiposdescuentos)){
+		case 1:
+			mensaje+="¡El descuento fue actualizado correctamente!";
+			break;
+		case 2:
+			mensaje+="¡Error. El descuento seleccionado ya fue aplicado previamente!";
+			break;
+		case 3:
+			mensaje+="¡Error. El descuento es mayor que el sueldo neto actual del empleado!";
+			break;
+		case 4:
+			mensaje+="¡Error. No se pudo aplicar el descuento a la boleta de pago!";
+			break;
+		case 0:
+			mensaje+="¡Error. No existe la boleta de pago indicada";
+			break;
+		case 5:
+			mensaje+="¡Error. No existe el id de descuento especificado";
+			break;
+		}
 	}else{ //Cualquier otro error
 		mensaje+="¡Error! Los parametros proporcionados no son correctos";
 	}

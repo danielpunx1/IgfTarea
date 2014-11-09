@@ -68,21 +68,19 @@ public class CtrlBoletaPagoDescuento {
 			return false;
 	}
 
-	/*public boolean modificarBoletaPagoDescuento(Short id_boletapagodescuento, Short id_boletapago, String id_tiposdescuentos) {
+	public int modificarBoletaPagoDescuento(Short id_boletapagodescuento, String id_tiposdescuentos) {
 		if (daoBoletaPD.daBoletaPagoDescuentoById(id_boletapagodescuento) != null) {
-			BoletaPagoDescuento boletapagodescuento = daoBoletaPD.daBoletaPagoDescuentoById(id_boletapagodescuento);
-			BoletaPago boletapago = daoBoletaP.daBoletaPagoById(id_boletapago);
-			TiposDescuentos tiposdescuentos = daoTiposDesc.daDescuentoById(id_tiposdescuentos);
-			boletapagodescuento.setBoletaPago(boletapago);
-			boletapagodescuento.setTiposDescuentos(tiposdescuentos);
 			
-			double monto_descuento=0;
-			boletapagodescuento.setMontoDescuento(monto_descuento);
-			daoBoletaPD.guardaActualiza(boletapagodescuento);
-			return true;
-		} else
-			return false;
-	}*/
+			CtrlBoletaPagoDescuento bpd = new CtrlBoletaPagoDescuento();
+			BoletaPago boletapago = bpd.daBoletaPagoDescuantoById(id_boletapagodescuento).getBoletaPago();
+			
+			if(bpd.eliminarBoletaPagoDescuento(id_boletapagodescuento)==false)	return 4;
+			
+			return bpd.crearBoletaPagoDescuento(boletapago.getId_boletapago(), id_tiposdescuentos);
+		}
+		
+		return 5;
+	}
 	
 	public List<BoletaPagoDescuento> daBoletaPagosDescuentos() {
 		return daoBoletaPD.daBoletaPagosDescuentos();

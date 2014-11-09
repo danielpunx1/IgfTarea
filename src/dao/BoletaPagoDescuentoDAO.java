@@ -79,7 +79,7 @@ public class BoletaPagoDescuentoDAO {
 	@SuppressWarnings("unchecked")
 	public List<BoletaPagoDescuento> daBoletaPagosDescuentos() {
 		sesion = sessionFactory.openSession();
-		Criteria criteria = sesion.createCriteria(BoletaPagoDescuento.class).addOrder(Order.asc("boletapago.id_boletapago"));
+		Criteria criteria = sesion.createCriteria(BoletaPagoDescuento.class).addOrder(Order.desc("boletapago.id_boletapago"));
 		List<BoletaPagoDescuento> boletapagodescuentos = criteria.list();
 		sesion.close();
 		return boletapagodescuentos;

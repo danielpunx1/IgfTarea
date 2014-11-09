@@ -10,17 +10,25 @@
 	String readonly = "";
 	String accion="agregar";
 	
-	BoletaPago boletapago = new BoletaPago(); //Solo lo uso para inicializar a valores vacios a municipio
+	//Solo lo uso para inicializar a valores vacios a municipio
+	BoletaPago boletapago = new BoletaPago(); 
 	TiposDescuentos tipodescuento = new TiposDescuentos();
+	String id_boletapago = "";
 	BoletaPagoDescuento boletapagodescuento = new BoletaPagoDescuento(boletapago,tipodescuento,0);
+	
 	if (request.getParameter("id_boletapagodescuento") != null) {
 		accion="editar";
 		Short id_boletapagodescuento=Short.parseShort(request.getParameter("id_boletapagodescuento"));
 		CtrlBoletaPagoDescuento bpd = new CtrlBoletaPagoDescuento();
 		if (bpd.daBoletaPagoDescuantoById(id_boletapagodescuento) != null) {
+			
+			boletapagodescuento = bpd.daBoletaPagoDescuantoById(id_boletapagodescuento);
+			
+			id_boletapago = boletapagodescuento.getBoletaPago().getId_boletapago().toString();
+			
 			readonly = "readonly"; //Para que el input del id_municipio no se pueda editar(cuando se esta editando un registro)
 			input_text="<label for='id_boletapagodescuento' class='nameLabel'>Id Descuento</label><input id='id_boletapagodescuento' type='text' name='id_boletapagodescuento' placeholder='Id Descuento'	value='"+ boletapagodescuento.getIdBoletaPagoDescuento()+ "' " + readonly + " required>";
-			boletapagodescuento = bpd.daBoletaPagoDescuantoById(id_boletapagodescuento);
+			
 			mensaje += "Edicion del descuento "	+ boletapagodescuento.getIdBoletaPagoDescuento();
 		} else {
 			mensaje += "El id de descuento especificado es inexistente. Si lo desea puede ingresar un nuevo registro";
@@ -45,11 +53,11 @@
 				if (tdActual.getId_tiposdescuentos().equalsIgnoreCase(boletapagodescuento.getTiposDescuentos().getId_tiposdescuentos())){
 					selectTD += "\n<option value='"
 							+ tdActual.getId_tiposdescuentos() + "' selected>"
-							+ tdActual.getId_tiposdescuentos() + " - " + (tdActual.getPorcentaje_descuento()) + "</option>";
+							+ tdActual.getDescripcion() + " - " + (tdActual.getPorcentaje_descuento()) + "</option>";
 				}else{
 					selectTD += "\n<option value='"
 							+ tdActual.getId_tiposdescuentos() + "' >"
-							+ tdActual.getId_tiposdescuentos() + " - " + (tdActual.getPorcentaje_descuento()) + "</option>";
+							+ tdActual.getDescripcion() + " - " + (tdActual.getPorcentaje_descuento()) + "</option>";
 				}
 			}else{
 				selectTD += "\n<option value='"
@@ -97,7 +105,7 @@
 						<%=input_text%>
 						
 						<label for="id_boletapago" class="nameLabel">Boleta de Pago</label> 
-						<input id="id_boletapago" type="text" name="id_boletapago" placeholder="Id Boleta de Pago"	required <%=readonly%>> 
+						<input id="id_boletapago" type="text" name="id_boletapago" placeholder="Id Boleta de Pago"	value="<%=id_boletapago%>" required <%=readonly%>> 
 						<label for="id_tiposdescuentos">Tipo de Descuento</label> 
 						<select name="id_tiposdescuentos" id="id_tiposdescuentos" class="form-control"><%=selectTD%></select>
 						<button type="submit" style="float: right;">Guardar</button>
