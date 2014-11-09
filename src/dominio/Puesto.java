@@ -38,7 +38,7 @@ public class Puesto implements Serializable{
 	private BigDecimal sueldoMax;
 
 	@SuppressWarnings("unused")
-	private Puesto() {
+	public Puesto() {
 	}
 
 	public Puesto(int idPuesto, String nombPuesto, String perfilPuesto,
