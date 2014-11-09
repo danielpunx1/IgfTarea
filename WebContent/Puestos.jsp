@@ -3,39 +3,45 @@
 <%@ page import="negocio.*"%>
 <%@ page import="dominio.*"%>
 <%@ page import="java.util.*"%>
-<%
-	String html = "<table class='table'>\n<tr><th>Id Municipio</th><th>Nombre Municipio</th><th>Departamento</th><th style='text-align:center'><a href='municipioForm.jsp' class='btn btn-success'>Nuevo Municipio</a></th></tr>\n";
-	CtrlMunicipio mun = new CtrlMunicipio();
-	List<Municipio> municipios = mun.daMunicipios();
-	int numMunicipios = municipios.size();
 
-	if (municipios.isEmpty()) {
-		html += "<tr><td colspan='3'>No hay municipios</td></tr>\n";
+<%
+	String html = "<table class='table'>\n<tr><th>Id Puesto</th><th>Nombre Puesto</th><th>Perfil</th><th>Fecha de Ingreso</th><th>Sueldo Minimo</th><th>Sueldo Maximo</th><th style='text-align:center'><a href='puestoForm.jsp' class='btn btn-success'>Nuevo Puesto</a></th></tr>\n";
+	CtrlPuesto cp = new CtrlPuesto();
+	List<Puesto> puestos = cp.daPuestos();
+	int numPuestos = puestos.size();
+
+	if (puestos.isEmpty()) {
+		html += "<tr><td colspan='3'>No hay puestos</td></tr>\n";
 	} else {
-		Municipio munActual;
-		for (int i = 0; i < numMunicipios; i++) {
-			munActual = (Municipio) municipios.get(i);
+		Puesto cpActual;
+		for (int i = 0; i < numPuestos; i++) {
+			cpActual = (Puesto) puestos.get(i);
 			html += "<tr><td>"
-					+ munActual.getIdMunicipio()
+					+ cpActual.getIdPuesto()
 					+ "</td><td>"
-					+ munActual.getNombMunicipio()
+					+ cpActual.getNombPuesto()
 					+ "</td><td>"
-					+ munActual.getDepto().getNombreDepto()
-					+ "</td><td style='text-align:center'><div class='btn-group btn-group-sm'><a href='municipioForm.jsp?id_municipio="
-					+ munActual.getIdMunicipio()
-					+ "' class='btn btn-warning'>Editar</a><a href='municipioProcess.jsp?id_municipio="
-					+ munActual.getIdMunicipio() 
+					+ cpActual.getPerfilPuesto()
+					+ "</td><td>"
+					+ cpActual.getFechaIng().toString()
+					+ "</td><td>"
+					+ cpActual.getSueldoMin()
+					+ "</td><td>"
+					+ cpActual.getSueldoMax()
+					+ "</td><td style='text-align:center'><div class='btn-group btn-group-sm'><a href='puestoForm.jsp?id_puesto="
+					+ cpActual.getIdPuesto()
+					+ "' class='btn btn-warning'>Editar</a><a href='puestoProcess.jsp?id_puesto="
+					+ cpActual.getIdPuesto() 
 					+"&accion=eliminar' class='btn btn-danger'>Eliminar</a></div></td></tr>\n";
 		}
 	}
 	html += "</table>";
 %>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Municipios</title>
+<title>Puestos</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -53,8 +59,8 @@
 			<div class="row">
 				<div class="span12">
 					<i class="icon-tasks page-title-icon"></i>
-					<h2>Municipios /</h2>
-					<p>Mantenimiento a tabla Municipios</p>
+					<h2>Puestos /</h2>
+					<p>Mantenimiento a tabla Puestos</p>
 				</div>
 			</div>
 		</div>

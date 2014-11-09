@@ -45,11 +45,15 @@ public class CtrlGenero {
 			return true;
 		} else
 			return false;
+	}*/
+	
+	public List<Genero> daGeneros() {
+		return daoGen.daGeneros();
 	}
 	
-	public List<Municipio> daMunicipios() {
-		return daoMun.daMunicipios();
-	}*/
+	public List<Genero> daGeneroByIdEmpleado(String id_empleado){
+		return daoGen.daGeneroByIdempleado(id_empleado);
+	}
 
 	public Genero daGeneroByIdGenero(String id_Genero) {
 		return daoGen.daGeneroById(id_Genero);

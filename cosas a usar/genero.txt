@@ -1,0 +1,1 @@
+INSERT INTO genero(id_sexo, d_sexo) VALUES ('M', 'Masculino'), ('F', 'Femenino');

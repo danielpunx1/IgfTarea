@@ -40,7 +40,7 @@ public class Oficina implements Serializable{
     private List<Empleado> emp;
 
 	@SuppressWarnings("unused")
-	private Oficina() {
+	public Oficina() {
 	}
 
 	public Oficina(String id_oficina, Municipio municipio, String nomb_oficina,String domicilio) {

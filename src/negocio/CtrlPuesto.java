@@ -37,7 +37,7 @@ public class CtrlPuesto {
 		}
 	}
 	
-	public boolean modificaPuesto(int idPuesto, String nombPuesto, String perfilPuesto,
+	public boolean modificarPuesto(int idPuesto, String nombPuesto, String perfilPuesto,
 			BigDecimal sueldoMin, BigDecimal sueldoMax){
 		Puesto puesto = daoPuesto.daPuestoById(idPuesto);
 		if(puesto!=null){

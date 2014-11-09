@@ -38,8 +38,13 @@ public class CtrlBoletaPago {
 			return false;
 	}
 	
+<<<<<<< HEAD
 	public boolean modificarBoletaPago(Short id,Empleado empleado,String periodo, double sueldo){
 		if(daoBoleta.daBoletaPagoByPeriodo(periodo) == null) 
+=======
+	public boolean modificarBoletaPago(Empleado empleado,String periodo, double sueldo){
+		if(daoBoleta.daBoletaPagoByPeriodo(periodo) != null) 
+>>>>>>> d6fec1f2c452f9ce7f771e2381b8765757668458
 		{
 			//BoletaPago boleta = daoBoleta.daBoletaPagoByPeriodo(periodo);
 			BoletaPago boleta = daoBoleta.daBoletaPagoById(id);

@@ -54,7 +54,7 @@ create table boletapago
 /*==============================================================*/
 create table boletapagodescuento
 (
-   id_boletapagodescuento int not null,
+   id_boletapagodescuento int not null AUTO_INCREMENT,
    id_boletapago        smallint,
    id_tiposdescuentos   varchar(5),
    monto_descuento      decimal(11,2),
