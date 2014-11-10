@@ -31,7 +31,6 @@ public class BoletaPago implements Serializable{
 	@Column(name = "id_boletapago")
 	private Short id_boletapago;
 	
-<<<<<<< HEAD
 	@JoinColumn(name = "id_empleado", referencedColumnName = "id_empleado")
 	@ManyToOne(optional = false)
 	private Empleado id_empleado;
@@ -50,14 +49,13 @@ public class BoletaPago implements Serializable{
 		
 	}
 	
-	public BoletaPago(Empleado id_empleado, String periodo_pago, Double sueldo_neto){
+	public BoletaPago(Empleado id_empleado, String periodo_pago, double sueldo_neto){
 		this.id_empleado = id_empleado;
 		this.periodo_pago = periodo_pago;
 		this.sueldo_neto = sueldo_neto;
 	}
 
-=======
->>>>>>> d6fec1f2c452f9ce7f771e2381b8765757668458
+
 	public Short getId_boletapago() {
 		return id_boletapago;
 	}
@@ -65,10 +63,6 @@ public class BoletaPago implements Serializable{
 	public void setId_boletapago(Short id_boletapago) {
 		this.id_boletapago = id_boletapago;
 	}
-	
-	@JoinColumn(name = "id_empleado", referencedColumnName = "id_empleado")
-	@ManyToOne(optional = false)
-	private Empleado id_empleado;
 	
 	public Empleado getId_empleado() {
 		return id_empleado;
@@ -78,10 +72,6 @@ public class BoletaPago implements Serializable{
 		this.id_empleado = id_empleado;
 	}
 	
-	@Basic(optional = false)
-	@Column(name = "periodo_pago")
-	private String periodo_pago;
-	
 	public String getPeriodo_pago() {
 		return periodo_pago;
 	}
@@ -90,30 +80,11 @@ public class BoletaPago implements Serializable{
 		this.periodo_pago = periodo_pago;
 	}
 	
-	@Column(name = "sueldo_neto")
-	private double sueldo_neto;
-	
 	public double getSueldo_neto() {
 		return sueldo_neto;
 	}
 
 	public void setSueldo_neto(double sueldo_neto) {
-		this.sueldo_neto = sueldo_neto;
-	}
-
-	
-	
-	/*@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY,mappedBy = "BoletaPago" )
-	private List<BoletaPagoDescuento> BPDList;
-	private String BPDList;*/
-	
-	public BoletaPago(){
-		
-	}
-	
-	public BoletaPago(Empleado id_empleado, String periodo_pago, double sueldo_neto){
-		this.id_empleado = id_empleado;
-		this.periodo_pago = periodo_pago;
 		this.sueldo_neto = sueldo_neto;
 	}
 	

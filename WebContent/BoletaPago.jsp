@@ -18,7 +18,7 @@
 			html += "<tr><td>"
 					+ boletaActual.getId_boletapago()
 					+ "</td><td>"
-					+ boletaActual.getId_empleado()
+					+ boletaActual.getId_empleado().getNombres() + " " + boletaActual.getId_empleado().getApellido_materno() 
 					+ "</td><td>"
 					+ boletaActual.getPeriodo_pago()
 					+ "</td><td>"

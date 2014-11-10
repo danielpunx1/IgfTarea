@@ -13,7 +13,8 @@
 	CtrlBoletaPago bp = new CtrlBoletaPago();
 	CtrlEmpleado emp = new CtrlEmpleado();
 	
-	if(request.getParameter("accion").equalsIgnoreCase("eliminar")){//Para eliminar un registro
+	if(request.getParameter("accion").equalsIgnoreCase("eliminar"))
+	{//Para eliminar un registro
 	
 		if( bp.daBoletaPagoById( (short)Integer.parseInt(request.getParameter("id_boletapago") ) ) != null)
 		{
@@ -33,7 +34,7 @@
 			empleado = emp.daEmpleadoById(request.getParameter("id_empleado"));
 			double salario = Double.parseDouble(request.getParameter("sueldo"));
 			String periodo = request.getParameter("periodo");
-			if( bp.modificarBoletaPago((short)ids,empleado, periodo,salario )) 
+			if( bp.modificarBoletaPago2((short)ids,empleado, periodo,salario )) 
 				mensaje+="¡La boletad de pago "+request.getParameter("id_boletapago")+" fue modificada correctamente!";	
 			else
 				mensaje+="¡No se pudo modificar la boleta de pago "+request.getParameter("id_boletapago")+"!";

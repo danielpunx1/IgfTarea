@@ -43,7 +43,7 @@ create table auditoria
 create table boletapago
 (
    id_boletapago        smallint not null AUTO_INCREMENT,
-   id_empleado          varchar(5),
+   id_empleado          varchar(5) not null,
    periodo_pago         varchar(25) not null,
    sueldo_neto          decimal(10,2) not null,
    primary key (id_boletapago)

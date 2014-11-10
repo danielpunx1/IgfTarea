@@ -29,7 +29,7 @@ public class CtrlBoletaPago {
 	
 	public boolean eliminarBoletaPago(Short id) 
 	{
-		if(daoBoleta.daBoletaPagoById(id)== null)
+		if(daoBoleta.daBoletaPagoById(id) != null)
 		{
 			BoletaPago boleta = daoBoleta.daBoletaPagoById(id);
 			daoBoleta.eliminar(boleta);
@@ -38,16 +38,25 @@ public class CtrlBoletaPago {
 			return false;
 	}
 	
-<<<<<<< HEAD
-	public boolean modificarBoletaPago(Short id,Empleado empleado,String periodo, double sueldo){
-		if(daoBoleta.daBoletaPagoByPeriodo(periodo) == null) 
-=======
-	public boolean modificarBoletaPago(Empleado empleado,String periodo, double sueldo){
-		if(daoBoleta.daBoletaPagoByPeriodo(periodo) != null) 
->>>>>>> d6fec1f2c452f9ce7f771e2381b8765757668458
+
+	public boolean modificarBoletaPago2(Short id,Empleado empleado,String periodo, double sueldo){
+		if(daoBoleta.daBoletaPagoByPeriodo(periodo) == null)
 		{
 			//BoletaPago boleta = daoBoleta.daBoletaPagoByPeriodo(periodo);
 			BoletaPago boleta = daoBoleta.daBoletaPagoById(id);
+			boleta.setId_empleado(empleado);
+			boleta.setPeriodo_pago(periodo);
+			boleta.setSueldo_neto(sueldo);
+			daoBoleta.guardaActualiza(boleta);
+			return true;
+		} else
+			return false;
+	}
+
+	public boolean modificarBoletaPago(Empleado empleado,String periodo, double sueldo){
+		if(daoBoleta.daBoletaPagoByPeriodo(periodo) != null) 
+		{
+			BoletaPago boleta = daoBoleta.daBoletaPagoByPeriodo(periodo);
 			boleta.setId_empleado(empleado);
 			boleta.setPeriodo_pago(periodo);
 			boleta.setSueldo_neto(sueldo);
