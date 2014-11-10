@@ -5,7 +5,7 @@
 <%@ page import="java.util.*"%>
 
 <%
-	String html = "<table class='table'>\n<tr><th>Nombre Empleado</th><th>Apellidos</th><th> </th><th>Activo</th><th>Jefe</th><th style='text-align:center'><a href='empleadoForm.jsp' class='btn btn-success'>Nuevo Empleado</a></th></tr>\n";
+	String html = "<table class='table'>\n<tr><th>Nombre Empleado</th><th>Apellidos</th><th> </th><th>Activo</th><th>Puesto</th><th style='text-align:center'><a href='empleadoForm.jsp' class='btn btn-success'>Nuevo Empleado</a></th></tr>\n";
 	CtrlEmpleado emp = new CtrlEmpleado();
 	List<Empleado> empleados = emp.daEmpleados();
 	int numEmpleados = empleados.size();
@@ -26,17 +26,17 @@
 					+ "</td><td>"
 					+ empActual.getActivo()
 					+ "</td><td>"  
-					+ empActual.getJefe()
-					+ "</td><td style='text-align:center'><div class='btn-group btn-group-sm'><a href='empleadoForm.jsp?id_empleado="
+					+ empActual.getPuesto().getNombPuesto()
+					+ "</td><td style='text-align:center'><div class='btn-group btn-group-sm'><a href='empleadoVer.jsp?id_empleado="
 					+ empActual.getId_empleado()
-					+ "' class='btn btn-primary'>Ver</a><a href='empleadoProcess.jsp?id_empleado="
+					+ "' class='btn btn-primary'>Ver</a><a href='empleadoForm.jsp?id_empleado="
 					+ empActual.getId_empleado()
-					+"' class='btn btn-warning'>Editar</a><a href='empleadoProcess.jsp?id_empleado="
+					+"&accion=editar' class='btn btn-warning'>Editar</a><a href='empleadoProces.jsp?id_empleado="
 					+ empActual.getId_empleado()
-					+"&accion=eliminar' class='btn btn-danger'>Eliminar</a></div></td></tr>\n";
+					+"&accion=eliminar' class='btn btn-danger'>Eliminar</a></div></td></tr>\n"; //
 		}
 	}
-	html += "</table>";
+	html += "</table>";//Eliminar le estabas dando va?? // No, Editar... Pero eliminar tampoco funcionaba y ahora si! 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

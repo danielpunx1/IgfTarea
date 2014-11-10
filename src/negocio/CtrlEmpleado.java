@@ -45,12 +45,21 @@ public class CtrlEmpleado {
 	}
 
 	public boolean eliminarEmpleado(String id_empleado) {
-		if (daoEmpleado.daEmpleadoById(id_empleado)!= null) {
-			Empleado empleado = daoEmpleado.daEmpleadoById(id_empleado);
-			daoEmpleado.eliminar(empleado);
-			return true;
-		} else
-			return false;
+		boolean b = false;
+		Empleado empleado = daoEmpleado.daEmpleadoById(id_empleado);
+		try{
+			//si existe ese empleado con ese id, que lo elimine
+			if (daoEmpleado.daEmpleadoById(id_empleado)!= null && empleado.getJefe()!=null) {
+			//if (daoEmpleado.daEmpleadoById(id_empleado)!= null && empleado.getJefe().equals(null)) {
+				//Empleado empleado = daoEmpleado.daEmpleadoById(id_empleado);
+				daoEmpleado.eliminar(empleado);
+				b = true;
+			}
+			else
+				b = false;
+		}catch(NullPointerException e){
+		}
+		return b;
 	}
 	
 	public boolean modificarEmpleado(String id_empleado, String nit, String dui,

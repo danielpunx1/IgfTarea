@@ -22,8 +22,6 @@ import org.hibernate.annotations.NamedQuery;
 
 @Entity
 @Table(name = "empleado", catalog = "clave2", schema = "")
-@NamedQuery(name="Empleado.findAll", query="SELECT e FROM Empleado e")
-
 public class Empleado implements Serializable{
 		
 	private static final long serialVersionUID = 1L;

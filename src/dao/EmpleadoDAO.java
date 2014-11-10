@@ -1,11 +1,14 @@
 package dao;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
+
 import datos.HibernateUtil;
 import dominio.Empleado;
 
@@ -41,6 +44,8 @@ public class EmpleadoDAO {
 	}
 	
 	public void eliminar(Empleado empleado) {
+		//creando validacion si no tiene registros hijos
+		//if(empleado.getJefe().equals(null))
 		try {
 			iniciaOperacion();
 			sesion.delete(empleado);
@@ -57,8 +62,10 @@ public class EmpleadoDAO {
 	@SuppressWarnings("unchecked")
 	public List<Empleado> daEmpleados() {
 		sesion = sessionFactory.openSession();
-		Query query = sesion.getNamedQuery("Empleado.findAll");
-		List<Empleado> empleados = query.list();
+		//Query query = sesion.getNamedQuery("Empleado.findAll");
+		//List<Empleado> empleados = query.list();
+		Criteria criteria = sesion.createCriteria(Empleado.class).addOrder(Order.asc("id_empleado"));
+		List<Empleado> empleados = criteria.list();
 		sesion.close();
 		return empleados;
 	}

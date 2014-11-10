@@ -3,23 +3,15 @@
 <%@ page import="negocio.*"%>
 <%@ page import="dominio.*"%>
 <%@ page import="java.util.*"%>
-<%@ page import="java.text.SimpleDateFormat"%>
 <%
 	String mensaje = "";
 	String readonly = "";
 	String accion = "agregar";
+	String nombrejefe="";
 	//Puesto p = new Puesto();
-	//Date fecha_nacimiento=null;
-	//Date fecha_ingreso=null;
-	//String id_empleado="";
-	//SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-	//fecha_nacimiento = formato.parse("01/01/2000");
-	//fecha_ingreso = formato.parse("01/01/2000");
-	//Oficina o = new Oficina();
-	//Genero g = new Genero();
-	//Empleado j = new Empleado();
-	//Empleado empleado = new Empleado("","","","","","",fecha_nacimiento,fecha_ingreso,0,"","","",g,p,o,j);
 	Empleado empleado = new Empleado();
+	//Oficina o = new Oficina();
+	Genero g = new Genero();
 	//si el campo de id_empleado no se envia en blanco
 	if (request.getParameter("id_empleado") != null) {
 		accion = "editar";
@@ -197,45 +189,53 @@
 		<div class="contact-us container">
 			<div class="row">
 				<form method="post" action="empleadoProces.jsp">
-					<div class="otro span5" style="float: center">
-						<label for="id_empleado" class="nameLabel">Id Empleado</label>
-						<input title = "El id debe contener 5 caracteres" id="id_empleado" type="text" name="id_empleado" placeholder="Id Empleado" value="<%=empleado.getId_empleado()%>" <%=readonly%> pattern="[A-Za-z0-9]{5}" required>
-						<label for="nombres" class="nameLabel">Nombres del Empleado</label>
-						<input title="Requerido nombres" id="nombres" type="text" name="nombres" placeholder="Ingrese aqui los nombres..." value="<%=empleado.getNombres()%>" pattern="[A-Za-z ]{5,45}" required>
-						<label for="apellido_pat" class="nameLabel">Primer Apellido</label>
-						<input title="Requerido Primer apellido" id="apellido_pat" type="text" name="apellido_pat" placeholder="Ingrece primer apellido..." value="<%=empleado.getApellido_paterno()%>" pattern="[A-Za-z ]{5,45}" required>
-						<label for="apellido_mat" class="nameLabel">Segundo Apellido</label>
-						<input title="Requerido Segundo Apellido" id="apellido_mat" type="text" name="apellido_mat" placeholder="Ingrese segundo apellido..." value="<%=empleado.getApellido_materno()%>" pattern="[A-Za-z ]{5,45}" required>
-						<label for="sexo">Sexo</label> 
-						<select name="sexo" id="sexo" class="form-control"><%=selectGenero%></select>
-						<label for="nit" class="nameLabel">NIT</label>
-						<input title="Sin Guiones" id="nit" type="text" name="nit" placeholder="Ingrese aqui el Nit..." value="<%=empleado.getNit()%>" pattern="[0-9]{14}" required>
-						<label for="dui" class="nameLabel">DUI</label>
-						<input title="Numero con guion ########-#" id="dui" type="text" name="dui" placeholder="Ingrese aqui el Dui..." value="<%=empleado.getDui()%>" pattern="[0-9]{8}-[0-9]{1}" required>
-						<label for="fecha_nacimiento" class="nameLabel">Fecha Nacimiento</label>
-						<input id="fecha_nacimiento" type="Date" name="fecha_nacimiento"  value="<%=empleado.getFecha_nacimiento()%>" required>
-						<label for="fecha_ingreso" class="nameLabel">Fecha Ingreso</label>
-						<input id="fecha_ingreso" type="Date" name="fecha_ingreso" value="<%=empleado.getFecha_ingreso()%>" required>
+					<div class="span5" style="float: center">
+						<label for="id_empleado" class="nameLabel"><h5>Id Empleado</h5></label>
+						<%=empleado.getId_empleado()%>
+						<label for="nombres" class="nameLabel"><h5>Nombres del Empleado</h5></label>
+						<%=empleado.getNombres()%> 
+						<label for="apellido_pat" class="nameLabel"><h5>Primer Apellido</h5></label>
+						<%=empleado.getApellido_paterno()%> 
+						<label for="apellido_mat" class="nameLabel"><h5>Segundo Apellido</h5></label>
+						<%=empleado.getApellido_materno()%> 
+						<label for="sexo"><h5>Sexo</h5></label> 
+						<%= empleado.getSexo().getSexo() %>
+						<label for="nit" class="nameLabel"><h5>NIT</h5></label>
+						<%=empleado.getNit()%>
+						<label for="dui" class="nameLabel"><h5>DUI</h5></label>
+						<%=empleado.getDui()%>
+						<label for="fecha_nacimiento" class="nameLabel"><h5>Fecha Nacimiento</h5></label>
+						<%=empleado.getFecha_nacimiento()%>
+						<label for="fecha_ingreso" class="nameLabel"><h5>Fecha Ingreso</h5></label>
+						<%=empleado.getFecha_ingreso()%>
 					</div>
-					<div class="otro span5" style="float: center">
-							<label for="sueldo" class="nameLabel">Sueldo</label>
-							<input title="Decimales con precision de 2 112.20" id="sueldo" type="text" name="sueldo" placeholder="Ingrese el Sueldo..." value="<%=empleado.getSueldo()%>" pattern="[0-9]{1,11}.[0-9]{1,2}" required>
-							<label for="email" class="nameLabel">Correo Electronico</label>
-							<input id="email" type="email" name="email" placeholder="Ingrese el email..." value="<%=empleado.getEmail()%>" required>
-							<label for="telefono" class="nameLabel">Telefono</label>
-							<input id="telefono" type="text" name="telefono" placeholder="Ingrese el telefono..." value="<%=empleado.getTelefono()%>" required>
-							<label for="activo" class="nameLabel">El Empleado es activo</label>
-							<select name ="activo" id="activo" class="form-control">
-								<option value="S" seected>Si</option>
-								<option value="N">No</option>
-							</select>
-							<label for="puesto">Puesto Laboral</label> 
-							<select name="puesto" id="puesto" class="form-control"><%=selectPuesto%></select>
-							<label for="oficina">Oficina</label> 
-							<select name="oficina" id="oficina" class="form-control"><%=selectOficina%></select>
-							<label for="oficina">Jefe</label> 
-							<select name="jefe" id="jefe" class="form-control"><%=selectJefe%></select>
-							<button type="submit" style=float: right;>Guardar</button>
+					<div class="span5" style="float: center">
+						<label for="sueldo" class="nameLabel"><h5>Sueldo</h5></label>
+						$ <%=empleado.getSueldo()%>
+						<label for="email" class="nameLabel"><h5>Correo Electronico</h5></label>
+						<%=empleado.getEmail()%>
+						<label for="telefono" class="nameLabel"><h5>Telefono</h5></label>
+						<%=empleado.getTelefono()%>
+						<label for="activo" class="nameLabel"><h5>El Empleado es activo</h5></label>
+						<%=empleado.getActivo()%>
+						<label for="puesto"><h5>Puesto Laboral</h5></label> 
+						<%=empleado.getPuesto().getNombPuesto()%>
+						<label for="oficina"><h5>Oficina</h5></label> 
+						<%=empleado.getOficina().getNombOficina()%>
+						<label for="jefe"><h5>Jefe</h5></label>
+						<%if(empleado.getJefe()==null)
+						{
+							nombrejefe="--";
+						}
+						else{
+							nombrejefe=empleado.getJefe().getNombres()+" "+empleado.getJefe().getApellido_paterno();
+						}
+						%>
+						<%=nombrejefe%> 
+						
+						<br><br>
+						<!-- <a href="Empleado.jsp"><button >Atras</button></a> -->
+							
 					</div>
 					<!--
 						Este input no se desplegara solo servira para enviar otro parametro extra 
