@@ -3,10 +3,12 @@ package negocio;
 import java.util.List;
 
 import dao.DepartamentoDAO;
+import dao.MunicipioDAO;
 import dominio.Departamento;
 
 public class CtrlDepartamento {
 	private DepartamentoDAO daoDepto = new DepartamentoDAO();
+	private MunicipioDAO daoMunicipio = new MunicipioDAO();
 
 	public boolean crearDepartamento(String id_depto, String nombre_depto, String zona_geografica) {
 		if ((daoDepto.daDepartamentoByIdDepto(id_depto) == null)&&(daoDepto.daDepartamentoByNombreDepto(nombre_depto)==null)) {
@@ -20,6 +22,8 @@ public class CtrlDepartamento {
 
 	public boolean eliminarDepartamento(String id_depto) {
 		if (daoDepto.daDepartamentoByIdDepto(id_depto)!= null) {
+			if(!daoMunicipio.daMunicipiosByIdDepto(id_depto).isEmpty())
+				return false;
 			Departamento departamento = daoDepto.daDepartamentoByIdDepto(id_depto);
 			daoDepto.eliminar(departamento);
 			return true;

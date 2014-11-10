@@ -1,6 +1,5 @@
 package negocio;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -9,8 +8,6 @@ import dominio.Empleado;
 import dominio.Genero;
 import dominio.Oficina;
 import dominio.Puesto;
-import dominio.TiposDescuentos;
-import negocio.*;
 
 public class CtrlEmpleado {
 	private EmpleadoDAO daoEmpleado = new EmpleadoDAO();
@@ -49,9 +46,9 @@ public class CtrlEmpleado {
 		Empleado empleado = daoEmpleado.daEmpleadoById(id_empleado);
 		try{
 			//si existe ese empleado con ese id, que lo elimine
-			if (daoEmpleado.daEmpleadoById(id_empleado)!= null && empleado.getJefe()!=null) {
-			//if (daoEmpleado.daEmpleadoById(id_empleado)!= null && empleado.getJefe().equals(null)) {
-				//Empleado empleado = daoEmpleado.daEmpleadoById(id_empleado);
+			if (daoEmpleado.daEmpleadoById(id_empleado)!= null) {
+				if(!daoEmpleado.daEmpleadosByIdJefe(id_empleado).isEmpty())
+					return false;
 				daoEmpleado.eliminar(empleado);
 				b = true;
 			}

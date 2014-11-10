@@ -3,12 +3,14 @@ package negocio;
 import java.util.List;
 import dao.DepartamentoDAO;
 import dao.MunicipioDAO;
+import dao.OficinaDAO;
 import dominio.Departamento;
 import dominio.Municipio;
 
 public class CtrlMunicipio {
 	private MunicipioDAO daoMun = new MunicipioDAO();
 	private DepartamentoDAO daoDepto = new DepartamentoDAO();
+	private OficinaDAO daoOficina = new OficinaDAO();
 
 	public boolean crearMunicipio(String id_municipio, String id_depto, String nomb_municipio) {
 		if ((daoMun.daMunicipioByIdMunicipio(id_municipio)== null)&&(daoDepto.daDepartamentoByIdDepto(id_depto)!=null)) {
@@ -23,6 +25,8 @@ public class CtrlMunicipio {
 
 	public boolean eliminarMunicipio(String id_municipio) {
 		if (daoMun.daMunicipioByIdMunicipio(id_municipio)!= null) {
+			if(!daoOficina.daOficinasByIdMunicipio(id_municipio).isEmpty())
+					return false;
 			Municipio municipio = daoMun.daMunicipioByIdMunicipio(id_municipio);
 			daoMun.eliminar(municipio);
 			return true;

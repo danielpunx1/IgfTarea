@@ -3,7 +3,6 @@
 <%@ page import="negocio.*"%>
 <%@ page import="dominio.*"%>
 <%@ page import="java.util.*"%>
-<%@ page import="java.math.BigDecimal"%>
 <%@ page import="java.sql.Date"%>
 <%@ page import="java.text.SimpleDateFormat"%>
 
@@ -17,7 +16,7 @@
 	}
 	CtrlPuesto cp = new CtrlPuesto();
 	Puesto puesto = cp.daPuestoById(id_puesto);
-	BigDecimal sMin, sMax;
+	double sMin, sMax;
 	Date fecha;
 	SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd", new Locale("es", "ES"));
 	if(request.getParameter("accion").equalsIgnoreCase("eliminar")){//Para eliminar un registro
@@ -33,8 +32,8 @@
 	}else if(request.getParameter("accion").equalsIgnoreCase("editar")){//Para editar un registro
 		
 		if(cp.daPuestoById(id_puesto)!=null){
-			sMin = new BigDecimal(request.getParameter("sueldo_min"));
-			sMax = new BigDecimal(request.getParameter("sueldo_max"));
+			sMin = Double.parseDouble(request.getParameter("sueldo_min"));
+			sMax = Double.parseDouble(request.getParameter("sueldo_max"));
 			if(cp.modificarPuesto(id_puesto, request.getParameter("nomb_puesto"), request.getParameter("perfil_puesto"),
 							sMin, sMax))
 				mensaje+="¡El puesto "+Integer.toString(id_puesto)+" fue modificado correctamente!";	
@@ -47,8 +46,8 @@
 		if(cp.daPuestoById(id_puesto)!=null)
 			mensaje+="!El id de puesto "+Integer.toString(id_puesto)+" ya existe!";
 		else{
-			sMin = new BigDecimal(request.getParameter("sueldo_min"));
-			sMax = new BigDecimal(request.getParameter("sueldo_max"));
+			sMin = Double.parseDouble(request.getParameter("sueldo_min"));
+			sMax = Double.parseDouble(request.getParameter("sueldo_max"));
 			try{
 				fecha = Date.valueOf(request.getParameter("fecha_ing"));
 				if(cp.crearPuesto(id_puesto, request.getParameter("nomb_puesto"), request.getParameter("perfil_puesto"),

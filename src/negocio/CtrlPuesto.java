@@ -1,20 +1,18 @@
 package negocio;
-import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
 
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
-
+import dao.EmpleadoDAO;
 import dao.PuestoDAO;
 import dominio.Puesto;
 
 public class CtrlPuesto {
 
 	private PuestoDAO daoPuesto = new PuestoDAO();
+	private EmpleadoDAO daoEmp = new EmpleadoDAO();
 
 	public boolean crearPuesto(int idPuesto, String nombPuesto, String perfilPuesto,
-			Date fechaIng, BigDecimal sueldoMin, BigDecimal sueldoMax){
+			Date fechaIng, double sueldoMin, double sueldoMax){
 
 		if(daoPuesto.daPuestoById(idPuesto)==null){
 			Puesto puesto = new Puesto(idPuesto, nombPuesto, perfilPuesto, fechaIng, sueldoMin, sueldoMax);
@@ -29,6 +27,8 @@ public class CtrlPuesto {
 	public boolean eliminarPuesto(int idPuesto){
 		Puesto puesto = daoPuesto.daPuestoById(idPuesto);
 		if(puesto!=null){
+			if(!daoEmp.daEmpleadosByIdPuesto(idPuesto).isEmpty())
+				return false;
 			daoPuesto.elimina(puesto);
 			return true;
 		}
@@ -38,7 +38,7 @@ public class CtrlPuesto {
 	}
 	
 	public boolean modificarPuesto(int idPuesto, String nombPuesto, String perfilPuesto,
-			BigDecimal sueldoMin, BigDecimal sueldoMax){
+			double sueldoMin, double sueldoMax){
 		Puesto puesto = daoPuesto.daPuestoById(idPuesto);
 		if(puesto!=null){
 			puesto.setNombPuesto(nombPuesto);
@@ -65,23 +65,19 @@ public class CtrlPuesto {
 		return daoPuesto.daPuestos();
 	}
 
-	@SuppressWarnings("unchecked")
-	public List<Puesto> daPuestosSMinMayorA(BigDecimal s_min){
+	public List<Puesto> daPuestosSMinMayorA(double s_min){
 		return daoPuesto.daPuestosSMinMayorA(s_min);
 	}
 	
-	@SuppressWarnings("unchecked")
-	public List<Puesto> daPuestosSMinMenorA(BigDecimal s_min){
+	public List<Puesto> daPuestosSMinMenorA(double s_min){
 		return daoPuesto.daPuestosSMinMenorA(s_min);
 	}
 	
-	@SuppressWarnings("unchecked")
-	public List<Puesto> daPuestosSMaxMayorA(BigDecimal s_max){
+	public List<Puesto> daPuestosSMaxMayorA(double s_max){
 		return daoPuesto.daPuestosSMaxMayorA(s_max);
 	}
 	
-	@SuppressWarnings("unchecked")
-	public List<Puesto> daPuestosSMaxMenorA(BigDecimal s_max){
+	public List<Puesto> daPuestosSMaxMenorA(double s_max){
 		return daoPuesto.daPuestosSMaxMenorA(s_max);
 	}
 }

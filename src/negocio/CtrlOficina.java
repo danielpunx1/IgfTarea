@@ -2,6 +2,7 @@ package negocio;
 
 import java.util.List;
 
+import dao.EmpleadoDAO;
 import dao.MunicipioDAO;
 import dao.OficinaDAO;
 import dominio.Municipio;
@@ -10,6 +11,7 @@ import dominio.Oficina;
 public class CtrlOficina {
 	private OficinaDAO daoOficina = new OficinaDAO();
 	private MunicipioDAO daoMunicipio = new MunicipioDAO();
+	private EmpleadoDAO daoEmpleado = new EmpleadoDAO();
 
 	public boolean crearOficina(String id_oficina, String id_municipio, String nomb_oficina,
 			String domicilio){
@@ -29,6 +31,8 @@ public class CtrlOficina {
 	public boolean eliminarOficina(String id_oficina){
 		Oficina oficina = daoOficina.daOficinaByIdOficina(id_oficina);
 		if(oficina!=null){
+			if(!daoEmpleado.daEmpleadosByIdOficina(id_oficina).isEmpty())
+				return false;
 			daoOficina.eliminar(oficina);
 			return true;
 		}

@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import dao.BoletaPagoDAO;
+import dao.BoletaPagoDescuentoDAO;
 import dominio.BoletaPago;
 import dominio.Empleado;
 import dominio.TiposDescuentos;
@@ -13,6 +14,7 @@ import dominio.TiposDescuentos;
 public class CtrlBoletaPago {
 
 	private BoletaPagoDAO  daoBoleta = new BoletaPagoDAO();
+	private BoletaPagoDescuentoDAO bpd = new BoletaPagoDescuentoDAO();
 	
 	public boolean crearBoleta(Empleado empleado, String periodo, Double sueldo ){
 		if(daoBoleta.daBoletaPagoByPeriodo(periodo) == null)
@@ -31,6 +33,8 @@ public class CtrlBoletaPago {
 	{
 		if(daoBoleta.daBoletaPagoById(id) != null)
 		{
+			if(!bpd.daBoletaPagoDescuentoByIdBoletaPago(id).isEmpty())
+					return false;
 			BoletaPago boleta = daoBoleta.daBoletaPagoById(id);
 			daoBoleta.eliminar(boleta);
 			return true;

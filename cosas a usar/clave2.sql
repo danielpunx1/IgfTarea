@@ -31,7 +31,7 @@ create table auditoria
 (
    id                   int not null auto_increment,
    tabla                varchar(40),
-   crud                 varchar(30),
+   crud                 varchar(200),
    usuario              varchar(50),
    fecha                datetime,
    primary key (id)
@@ -43,7 +43,7 @@ create table auditoria
 create table boletapago
 (
    id_boletapago        smallint not null AUTO_INCREMENT,
-   id_empleado          varchar(5) not null,
+   id_empleado          varchar(5),
    periodo_pago         varchar(25) not null,
    sueldo_neto          decimal(10,2) not null,
    primary key (id_boletapago)

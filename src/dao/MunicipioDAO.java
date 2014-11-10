@@ -81,9 +81,7 @@ public class MunicipioDAO {
 	@SuppressWarnings("unchecked")
 	public List<Municipio> daMunicipiosByIdDepto(String id_depto) {
 		sesion = sessionFactory.openSession();
-		//Query query = sesion.getNamedQuery("Departamentos.findAll");
-		//List<Departamento> departamentos = query.list();
-		Criteria criteria = sesion.createCriteria(Municipio.class).add(Restrictions.like("id_depto", id_depto));
+		Criteria criteria = sesion.createCriteria(Municipio.class).add(Restrictions.like("depto.id_depto", id_depto));
 		List<Municipio> municipios = (List<Municipio>) criteria.list();
 		sesion.close();
 		return municipios;
@@ -92,8 +90,6 @@ public class MunicipioDAO {
 	@SuppressWarnings("unchecked")
 	public List<Municipio> daMunicipios() {
 		sesion = sessionFactory.openSession();
-		//Query query = sesion.getNamedQuery("Departamentos.findAll");
-		//List<Departamento> departamentos = query.list();
 		Criteria criteria = sesion.createCriteria(Municipio.class).addOrder(Order.asc("id_municipio"));
 		List<Municipio> municipios = criteria.list();
 		sesion.close();

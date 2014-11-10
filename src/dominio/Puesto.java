@@ -1,7 +1,6 @@
 package dominio;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.sql.Date;
 
 import javax.persistence.Basic;
@@ -32,17 +31,16 @@ public class Puesto implements Serializable{
 	private Date fechaIng;
 	
 	@Column(name="sueldo_min",nullable=false)
-	private BigDecimal sueldoMin;
+	private double sueldoMin;
 	
 	@Column(name="sueldo_max",nullable=false)
-	private BigDecimal sueldoMax;
+	private double sueldoMax;
 
-	@SuppressWarnings("unused")
 	public Puesto() {
 	}
 
 	public Puesto(int idPuesto, String nombPuesto, String perfilPuesto,
-			Date fechaIng, BigDecimal sueldoMin, BigDecimal sueldoMax) {
+			Date fechaIng, double sueldoMin, double sueldoMax) {
 		this.idPuesto = idPuesto;
 		this.nombPuesto = nombPuesto;
 		this.perfilPuesto = perfilPuesto;
@@ -83,19 +81,19 @@ public class Puesto implements Serializable{
 		this.fechaIng = fechaIng;
 	}
 
-	public BigDecimal getSueldoMin() {
+	public double getSueldoMin() {
 		return sueldoMin;
 	}
 
-	public void setSueldoMin(BigDecimal sueldoMin) {
+	public void setSueldoMin(double sueldoMin) {
 		this.sueldoMin = sueldoMin;
 	}
 
-	public BigDecimal getSueldoMax() {
+	public double getSueldoMax() {
 		return sueldoMax;
 	}
 
-	public void setSueldoMax(BigDecimal sueldoMax) {
+	public void setSueldoMax(double sueldoMax) {
 		this.sueldoMax = sueldoMax;
 	}
 	

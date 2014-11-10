@@ -1,24 +1,17 @@
 package dominio;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Table;
 import dominio.Puesto;
 import dominio.Oficina;
-import org.hibernate.annotations.ForeignKey;
-import org.hibernate.annotations.NamedQuery;
 
 @Entity
 @Table(name = "empleado", catalog = "clave2", schema = "")

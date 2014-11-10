@@ -82,7 +82,7 @@ public class OficinaDAO {
 	public List<Oficina> daOficinasByIdMunicipio(String id_municipio){
 		sesion = sessionFactory.openSession();
 		Criteria criteria = sesion.createCriteria(Oficina.class)
-				.add(Restrictions.like("id_municipio", id_municipio));
+				.add(Restrictions.like("municipio.id_municipio", id_municipio));
 		List<Oficina> oficinas = (List<Oficina>) criteria.list();
 		sesion.close();
 		return oficinas;

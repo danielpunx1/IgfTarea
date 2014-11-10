@@ -3,11 +3,11 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 
 import datos.HibernateUtil;
 import dominio.Empleado;
@@ -15,6 +15,7 @@ import dominio.Empleado;
 public class EmpleadoDAO {
 
 	private HibernateUtil hibernateUtil = new HibernateUtil() ;
+	@SuppressWarnings("static-access")
 	private SessionFactory sessionFactory = hibernateUtil.getSessionFactory();
 	private Session sesion;
 	private Transaction tx;
@@ -77,4 +78,35 @@ public class EmpleadoDAO {
 		sesion.close() ;
 		return id;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Empleado> daEmpleadosByIdOficina(String id_oficina){
+		sesion = sessionFactory.openSession();
+		Criteria criteria = sesion.createCriteria(Empleado.class)
+				.add(Restrictions.like("oficina.id_oficina", id_oficina));
+		List<Empleado> empleados = (List<Empleado>) criteria.list();
+		sesion.close();
+		return empleados;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Empleado> daEmpleadosByIdPuesto(int id_puesto){
+		sesion = sessionFactory.openSession();
+		Criteria criteria = sesion.createCriteria(Empleado.class)
+				.add(Restrictions.eq("puesto.idPuesto", id_puesto));
+		List<Empleado> empleados = (List<Empleado>) criteria.list();
+		sesion.close();
+		return empleados;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Empleado> daEmpleadosByIdJefe(String id_jefe){
+		sesion = sessionFactory.openSession();
+		Criteria criteria = sesion.createCriteria(Empleado.class)
+				.add(Restrictions.eq("jefe.id_empleado", id_jefe));
+		List<Empleado> empleados = (List<Empleado>) criteria.list();
+		sesion.close();
+		return empleados;
+	}
+	
 }

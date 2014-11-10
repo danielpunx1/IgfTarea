@@ -5,16 +5,14 @@
 <%@ page import="dominio.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="java.sql.Date"%>
-<%@page import="java.math.BigDecimal"%>
 
 <%
 	String mensaje = "";
 	String readonly = "";
 	String accion="agregar";
 	
-	BigDecimal cero = new BigDecimal(0.00);
-	Date f = Date.valueOf("2014-01-01");
-	Puesto puesto = new Puesto(0, "", "",f , cero, cero);
+		Date f = Date.valueOf("2014-01-01");
+	Puesto puesto = new Puesto(0, "", "",f , 0, 0);
 	
 	if (request.getParameter("id_puesto") != null) {
 		accion="editar";

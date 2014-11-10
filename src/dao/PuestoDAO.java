@@ -1,6 +1,5 @@
 package dao;
 
-import java.math.BigDecimal;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -13,6 +12,7 @@ import dominio.Puesto;
 
 public class PuestoDAO {
 	private HibernateUtil hibernateUtil = new HibernateUtil() ;
+	@SuppressWarnings("static-access")
 	private SessionFactory sessionFactory = hibernateUtil.getSessionFactory();
 	private Session sesion;
 	private Transaction tx;
@@ -79,7 +79,7 @@ public class PuestoDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Puesto> daPuestosSMinMayorA(BigDecimal s_min){
+	public List<Puesto> daPuestosSMinMayorA(double s_min){
 		sesion = sessionFactory.openSession();
 		Criteria criteria = sesion.createCriteria(Puesto.class)
 				.add(Restrictions.ge("sueldo_min", s_min));
@@ -89,7 +89,7 @@ public class PuestoDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Puesto> daPuestosSMinMenorA(BigDecimal s_min){
+	public List<Puesto> daPuestosSMinMenorA(double s_min){
 		sesion = sessionFactory.openSession();
 		Criteria criteria = sesion.createCriteria(Puesto.class)
 				.add(Restrictions.le("sueldo_min", s_min));
@@ -99,7 +99,7 @@ public class PuestoDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Puesto> daPuestosSMaxMayorA(BigDecimal s_max){
+	public List<Puesto> daPuestosSMaxMayorA(double s_max){
 		sesion = sessionFactory.openSession();
 		Criteria criteria = sesion.createCriteria(Puesto.class)
 				.add(Restrictions.ge("sueldo_max", s_max));
@@ -109,7 +109,7 @@ public class PuestoDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Puesto> daPuestosSMaxMenorA(BigDecimal s_max){
+	public List<Puesto> daPuestosSMaxMenorA(double s_max){
 		sesion = sessionFactory.openSession();
 		Criteria criteria = sesion.createCriteria(Puesto.class)
 				.add(Restrictions.le("sueldo_max", s_max));
