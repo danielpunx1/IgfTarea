@@ -46,7 +46,7 @@ public class CtrlOficina {
 			Oficina oficina = daoOficina.daOficinaByIdOficina(id_oficina);
 			oficina.setMunicipio(municipio);
 			oficina.setDomicilio(domicilio);
-			oficina.setNomb_oficina(nomb_oficina);
+			oficina.setNombOficina(nomb_oficina);
 			daoOficina.guardaActualiza(oficina);
 			return true;
 		}

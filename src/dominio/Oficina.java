@@ -50,11 +50,11 @@ public class Oficina implements Serializable{
 		this.domicilio = domicilio;
 	}
 
-	public String getId_oficina() {
+	public String getIdOficina() {
 		return id_oficina;
 	}
 
-	public void setId_oficina(String id_oficina) {
+	public void setIdOficina(String id_oficina) {
 		this.id_oficina = id_oficina;
 	}
 
@@ -66,11 +66,11 @@ public class Oficina implements Serializable{
 		this.municipio = municipio;
 	}
 
-	public String getNomb_oficina() {
+	public String getNombOficina() {
 		return nomb_oficina;
 	}
 
-	public void setNomb_oficina(String nomb_oficina) {
+	public void setNombOficina(String nomb_oficina) {
 		this.nomb_oficina = nomb_oficina;
 	}
 
