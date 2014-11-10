@@ -12,7 +12,7 @@
                             <div class="nav-collapse collapse">
                                 <ul class="nav pull-right">
                                     <li id="Home">
-                                        <a href="index.html"><i class="icon-home"></i><br />Home</a>
+                                        <a href="index.jsp"><i class="icon-home"></i><br />Home</a>
                                     </li>
                                     <li id="Empleados">
                                         <a href="Empleados.jsp"><i class="icon-user"></i><br />Empleados</a>
