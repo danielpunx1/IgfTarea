@@ -12,7 +12,8 @@
 	CtrlTiposDescuentos desc = new CtrlTiposDescuentos();
 	TiposDescuentos Descuento;
 	
-	if(request.getParameter("accion").equalsIgnoreCase("eliminar")){//Para eliminar un registro
+	if(request.getParameter("accion").equalsIgnoreCase("eliminar"))
+	{//Para eliminar un registro
 	
 		if( desc.daTipoDescuentoById(id_tipodescuento) != null )
 		{
@@ -23,12 +24,13 @@
 		}else
 			mensaje+="¡El id tipo descuento "+id_tipodescuento+" no existe!";
 	
-	}else if(request.getParameter("accion").equalsIgnoreCase("editar")){//Para editar un registro
+	}else if(request.getParameter("accion").equalsIgnoreCase("editar"))
+	{//Para editar un registro
 		
 		if( desc.daTipoDescuentoById(id_tipodescuento) != null )
 		{
 			String descripcion = request.getParameter("descripcion");
-			BigDecimal porcentaje = new BigDecimal( request.getParameter("porcentaje") );
+			double porcentaje = Double.parseDouble( request.getParameter("porcentaje") );
 			String fechas = request.getParameter("fecha");
 			
 		    SimpleDateFormat var = new SimpleDateFormat("yyyy-MM-dd");
@@ -42,13 +44,14 @@
 		}else
 			mensaje+="!El id de tipo descuento "+id_tipodescuento+" no existe!";
 
-	}else if(request.getParameter("accion").equalsIgnoreCase("agregar")){//Para ingresar un nuevo registro
+	}else if(request.getParameter("accion").equalsIgnoreCase("agregar"))
+	{//Para ingresar un nuevo registro
 		if( desc.daTipoDescuentoById(id_tipodescuento) != null)
 			mensaje+="!El id de tipo descuento "+id_tipodescuento+" ya existe!";
 		else
 		{
 			String descripcion = request.getParameter("descripcion");
-			BigDecimal porcentaje = new BigDecimal( request.getParameter("porcentaje") );
+			double porcentaje = Double.parseDouble( request.getParameter("porcentaje") );
 			String fechas = request.getParameter("fecha");
 			
 		    SimpleDateFormat var = new SimpleDateFormat("yyyy-MM-dd");

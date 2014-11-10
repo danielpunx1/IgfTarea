@@ -26,9 +26,6 @@ import javax.persistence.TemporalType;
 
 public class TiposDescuentos implements Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -92,24 +89,5 @@ public class TiposDescuentos implements Serializable {
 	public void setFecha_ingreso(Date fecha_ingreso) {
 		this.fecha_ingreso = fecha_ingreso;
 	}
-
-	/*
-	public List<BoletaPagoDescuento> getBPDList() {
-		return BPDList;
-	}
-
-	public void setBPDList(List<BoletaPagoDescuento> bPDList) {
-		BPDList = bPDList;
-	}
-	*/
-	
-//	 public Set getBoletapagodescuentos() {
-//	        return this.boletapagodescuentos;
-//	    }
-//	    
-//	    public void setBoletapagodescuentos(Set boletapagodescuentos) {
-//	        this.boletapagodescuentos = boletapagodescuentos;
-//	    }
-	
 	
 }

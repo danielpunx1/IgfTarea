@@ -17,8 +17,8 @@
                                     <li id="Empleados">
                                         <a href="Empleados.jsp"><i class="icon-user"></i><br />Empleados</a>
                                     </li>
-                                    <li id="Genero">
-                                        <a href="Genero.jsp"><i class="icon-adjust"></i><br />Genero</a>
+                                    <!-- <li id="Genero">
+                                        <a href="Genero.jsp"><i class="icon-adjust"></i><br />Genero</a> -->
                                     </li>
                                     <li id="Puestos">
                                         <a href="Puestos.jsp"><i class="icon-th-list"></i><br />Puestos</a>
@@ -33,13 +33,13 @@
                                         <a href="Departamentos.jsp"><i class="icon-road"></i><br />Departamentos</a>
                                     </li>
                                     <li id="Boletas">
-                                        <a href="Boletas.jsp"><i class="icon-envelope-alt"></i><br />Boletas</a>
+                                        <a href="BoletaPago.jsp"><i class="icon-envelope-alt"></i><br />Boletas</a>
                                     </li>
                                     <li>
                                         <a href="BoletaPagoDescuento.jsp"><i class="icon-th"></i><br />Descuentos/Pagos</a>
                                     </li>
                                     <li id="Descuentos">
-                                        <a href="Descuentos.jsp"><i class="icon-list"></i><br />Descuentos</a>
+                                        <a href="tiposDescuentos.jsp"><i class="icon-list"></i><br />Descuentos</a>
                                     </li>
                                 </ul>
                             </div>

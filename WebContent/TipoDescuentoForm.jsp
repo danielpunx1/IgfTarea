@@ -13,11 +13,14 @@
 	//Municipio municipio = new Municipio("",d,"");
 	TiposDescuentos Descuento = new TiposDescuentos();
 	
-	if (request.getParameter("id_tipodescuento") != null) {
+	if (request.getParameter("id_tipodescuento") != null) 
+	{
 		accion="editar";
 		String id_tipodescuento = request.getParameter("id_tipodescuento");
 		CtrlTiposDescuentos desc = new CtrlTiposDescuentos();
-		if (desc.daTipoDescuentoById(id_tipodescuento) != null) {
+		
+		if (desc.daTipoDescuentoById(id_tipodescuento) != null) 
+		{
 			readonly = "readonly"; //Para que el input del id_municipio no se pueda editar(cuando se esta editando un registro)
 			Descuento = desc.daTipoDescuentoById(id_tipodescuento);
 			mensaje += "Edicion del municipio "
@@ -69,7 +72,7 @@
 						<label for="descripcion" class="nameLabel">Descripci&oacute;n</label>
 						<textarea id="descripcion" name="descripcion" placeholder="Ingrese una descripcion"><%=Descuento.getDescripcion() %></textarea>  
 						<label for="porcentaje">Porcentaje</label> 
-						<input id="porcentaje" type="text" name="porcentaje" placeholder="Descripcion" value="<%=Descuento.getPorcentaje_descuento()%>" required>
+						<input id="porcentaje" type="text" name="porcentaje" placeholder="Descripcion" maxlength="4" value="<%=Descuento.getPorcentaje_descuento()%>" required>
 						<label for="fecha">Fecha</label>
                           <input id="fecha" type="date" name="fecha" value="<%=Descuento.getFecha_ingreso()%>">
 						<button type="submit" style="float: right;">Guardar</button>
